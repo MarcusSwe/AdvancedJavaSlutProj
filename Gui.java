@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 /*Extremt enkelt Gui för att kunna komma igång.
 Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kursmoment - så fastna inte här!
@@ -31,14 +32,14 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         }
 
         //Returnera det senaste commitade kommandot
-        public String getCommand(){
+        /*public String getCommand(){
             if (this.gotCommand){
                 System.out.println(this.command);
                 return this.command;
             }
             return null;
+        }*/
 
-        }
         //Här kan man updatera respektive fält:
         public void setShowRoom(String roomDescription){
             this.showRoom.setText(roomDescription);
@@ -82,8 +83,13 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
 
             ActionListener inputListener = e -> {
                 this.command = input.getText();
-                this.gotCommand = true;
-                System.out.println(this.command);};
+                String xy = "test";
+                if(Objects.equals("test", this.command)){
+               // this.gotCommand = true;
+                System.out.println(this.command);
+                } else System.out.println("skriv något");
+
+            };
 
             input.addActionListener(inputListener);
 
