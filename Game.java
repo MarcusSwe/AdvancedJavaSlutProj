@@ -7,9 +7,9 @@ public class Game {
         this.gui = new Gui();
 
 
-        xNPC Jason = new xNPC("Jason");
-        xNPC Freddy = new xNPC("Freddy");
-        xNPC TureSventon = new xNPC("Ture Sventon");
+        Person Jason = new Person("Jason");
+        Person Freddy = new Person("Freddy");
+        Person TureSventon = new Person("Ture Sventon");
 
 
 
@@ -26,7 +26,7 @@ public class Game {
     }
 
 
-  // flytta över denna till person klassen.. Man kanske har runnable här utan använder sig av getters och setters där man skickar info och flyttar dem till olika rum eftersom han inte har runnable.. 
+  /* flytta över denna till person klassen.. Man kanske har runnable här utan använder sig av getters och setters där man skickar info och flyttar dem till olika rum eftersom han inte har runnable..
     class xNPC extends Npc implements Runnable {
         String xname;
 
@@ -38,7 +38,7 @@ public class Game {
         public void run(){
             System.out.println(this.xname + " says hi from room x");
         }
-    }
+    }*/
 
 
 
