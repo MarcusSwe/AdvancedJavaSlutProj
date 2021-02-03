@@ -84,6 +84,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             ActionListener inputListener = e -> {
                 this.command = input.getText();
                 String xy = "test";
+                //gör till switch sats för dem olika kommandon och köra metoder..
                 if(Objects.equals("test", this.command)){
                // this.gotCommand = true;
                 System.out.println(this.command);

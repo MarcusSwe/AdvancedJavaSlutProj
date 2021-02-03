@@ -6,19 +6,22 @@ public class Game {
     public Game(){
         this.gui = new Gui();
 
+        Inventory xTest = new Inventory(10);
 
-        Person Jason = new Person("Jason");
-        Person Freddy = new Person("Freddy");
-        Person TureSventon = new Person("Ture Sventon");
+        Person Jason = new Person("Jason", 10, xTest);
+        Person Freddy = new Person("Freddy", 100, xTest);
+        Person TureSventon = new Person("Ture Sventon", 400, xTest);
 
-
+        Update updateGUI = new Update(xTest);
 
 
 
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
-        pool.scheduleAtFixedRate(Jason ,1,2, TimeUnit.SECONDS);
-        pool.scheduleAtFixedRate(Freddy ,1,2, TimeUnit.SECONDS);
-        pool.scheduleAtFixedRate(TureSventon ,1,2, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(updateGUI ,1,5, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(Jason ,1,4, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(Freddy ,1,4, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(TureSventon ,1,4, TimeUnit.SECONDS);
+
 
 
 
