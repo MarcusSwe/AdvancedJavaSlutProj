@@ -3,10 +3,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Game {
     Gui gui;
+    static Inventory xTest = new Inventory(10);
+    static Player jAg = new Player(xTest, 1000000);
+
     public Game(){
         this.gui = new Gui();
 
-        Inventory xTest = new Inventory(10);
+
 
         Person Jason = new Person("Jason", 10, xTest);
         Person Freddy = new Person("Freddy", 100, xTest);
@@ -28,6 +31,9 @@ public class Game {
 
     }
 
+     public static void UTEST() {
+         jAg.run();
+    }
 
   /* flytta över denna till person klassen.. Man kanske har runnable här utan använder sig av getters och setters där man skickar info och flyttar dem till olika rum eftersom han inte har runnable..
     class xNPC extends Npc implements Runnable {

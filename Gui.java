@@ -58,10 +58,10 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
 
 //Nedantåenda spaghetti är inte vacker...
 
-
+        /*
         public void gotCommand(){
             this.gotCommand = false;
-        }
+        }*/
 
         private void setUpPanel(){
             this.panel.add(showPersons);
@@ -87,7 +87,8 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                 //gör till switch sats för dem olika kommandon och köra metoder..
                 if(Objects.equals("test", this.command)){
                // this.gotCommand = true;
-                System.out.println(this.command);
+                    Game.UTEST();
+                System.out.println("adderat");
                 } else System.out.println("skriv något");
 
             };
