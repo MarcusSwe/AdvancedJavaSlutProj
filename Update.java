@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Update implements Runnable{
 
     Inventory boom;
@@ -10,6 +12,7 @@ public class Update implements Runnable{
 
     public void run(){
         System.out.println(this.boom.getInt());
+        System.out.println(Arrays.toString(this.boom.getStream()));
     }
 
 }

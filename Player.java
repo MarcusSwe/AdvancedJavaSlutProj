@@ -20,6 +20,7 @@ public class Player {
 
     public void run() {
        alpha.setInt(this.yu);
+       alpha.setStream(2);
     }
 
     public void run2(){
