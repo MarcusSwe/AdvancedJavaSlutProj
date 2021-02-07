@@ -83,13 +83,29 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
 
             ActionListener inputListener = e -> {
                 this.command = input.getText();
-                String xy = "test";
+                switch (this.command){
+                    case "test":
+                        Game.UTEST();
+                        break;
+                    case "test2":
+                        Game.YTEST();
+                        break;
+                    case "test3":
+                        Game.XTEST();
+                        break;
+                    case "test4":
+                        Game.X2TEST();
+                        break;
+                }
                 //gör till switch sats för dem olika kommandon och köra metoder..
-                if(Objects.equals("test", this.command)){
+               /* if(Objects.equals("test", this.command)){
                // this.gotCommand = true;
                     Game.UTEST();
                 System.out.println("adderat");
-                } else System.out.println("skriv något");
+                } else System.out.println("skriv något");*/
+
+
+
 
             };
 

@@ -35,6 +35,17 @@ public class Game {
          jAg.run();
     }
 
+    public static void YTEST() {
+        jAg.startT1();
+    }
+
+    public static void XTEST() {
+        jAg.run2();
+    }
+    public static void X2TEST() {
+        jAg.run3();
+    }
+
   /* flytta över denna till person klassen.. Man kanske har runnable här utan använder sig av getters och setters där man skickar info och flyttar dem till olika rum eftersom han inte har runnable..
     class xNPC extends Npc implements Runnable {
         String xname;
