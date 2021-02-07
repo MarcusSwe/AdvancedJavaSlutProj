@@ -96,6 +96,9 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "test4":
                         Game.X2TEST();
                         break;
+                    case "test5":
+                        Game.X3TEST();
+                        break;
                 }
                 //gör till switch sats för dem olika kommandon och köra metoder..
                /* if(Objects.equals("test", this.command)){

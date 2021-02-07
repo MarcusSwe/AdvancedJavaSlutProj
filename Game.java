@@ -45,6 +45,11 @@ public class Game {
     public static void X2TEST() {
         jAg.run3();
     }
+    public static void X3TEST() {
+        jAg.run4();
+    }
+
+
 
   /* flytta över denna till person klassen.. Man kanske har runnable här utan använder sig av getters och setters där man skickar info och flyttar dem till olika rum eftersom han inte har runnable..
     class xNPC extends Npc implements Runnable {

@@ -32,6 +32,10 @@ public class Player {
         this.future.cancel(true);
     }
 
+    public void run4(){
+        this.pool2.shutdown();
+    }
+
     public void startT1() {
         this.pool2 = new ScheduledThreadPoolExecutor(2);
         pool2.scheduleAtFixedRate(new segHej(), 1, 5, TimeUnit.SECONDS);
