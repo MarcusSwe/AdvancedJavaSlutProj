@@ -19,26 +19,26 @@ public class Inventory {
 
     }
 
-    public int getInt() {
+    public synchronized int getInt() {
         return this.test;
     }
 
-    public void setStream(int z){
+    public synchronized void setStream(int z){
         IntStream myStream = Arrays.stream(this.streamtest);
         this.streamtest = myStream
                 .map(x -> x*z)
                 .toArray();
     }
 
-    public int[] getStream(){
+    public synchronized int[] getStream(){
         return this.streamtest;
     }
 
-    public void setInt(int y){
+    public synchronized void setInt(int y){
         this.test = this.test + y;
     }
 
-  public void setRoom(String y){
+  public synchronized void setRoom(String y){
         Stream<String> myStream2 = Stream.of(this.roomtest);
         this.roomtest = myStream2
                 .map(x -> {if(x == ""){
@@ -47,14 +47,9 @@ public class Inventory {
                  })
                 .collect(Collectors.toList()).toArray(new String[0]);
 
-
-
-
-
-
   }
 
-  public String[] getRoom() {
+  public synchronized String[] getRoom() {
         return this.roomtest;
     }
 

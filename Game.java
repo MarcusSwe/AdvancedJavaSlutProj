@@ -5,30 +5,28 @@ public class Game {
     Gui gui;
     static Inventory xTest = new Inventory(10);
     static Player jAg = new Player(xTest, 1000000);
+    static Room rum1 = new Room("Rum ett");
+    static Room rum2 = new Room("Rum två");
+    static Room rum3 = new Room("Rum tre");
+    static Room rum4 = new Room("Rum fyra");
+    static Person Jason = new Person("Jason", 10, xTest,1);
+    static Person Freddy = new Person("Freddy", 100, xTest,2);
+    static Person TureSventon = new Person("Ture Sventon", 400, xTest,2);
 
     public Game(){
         this.gui = new Gui();
 
 
 
-        Person Jason = new Person("Jason", 10, xTest);
-        Person Freddy = new Person("Freddy", 100, xTest);
-        Person TureSventon = new Person("Ture Sventon", 400, xTest);
-
-        Room rum1 = new Room();
-        Room rum2 = new Room();
-        Room rum3 = new Room();
-        Room rum4 = new Room();
-
         Update updateGUI = new Update(xTest);
 
 
 
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
-        pool.scheduleAtFixedRate(updateGUI ,1,5, TimeUnit.SECONDS);
-        pool.scheduleAtFixedRate(Jason ,1,4, TimeUnit.SECONDS);
-        pool.scheduleAtFixedRate(Freddy ,1,4, TimeUnit.SECONDS);
-        pool.scheduleAtFixedRate(TureSventon ,1,4, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(updateGUI ,6,6, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(Jason ,1,8, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(Freddy ,1,8, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(TureSventon ,1,8, TimeUnit.SECONDS);
 
 
 
