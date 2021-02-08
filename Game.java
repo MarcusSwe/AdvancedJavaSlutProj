@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 public class Game {
     Gui gui;
     static Inventory xTest = new Inventory(10);
-    static Player jAg = new Player(xTest, 1000000);
+    static Player jAg = new Player(xTest, 1000000, "MEEEEE", 1);
     static Room rum1 = new Room("Rum ett");
     static Room rum2 = new Room("Rum två");
     static Room rum3 = new Room("Rum tre");
@@ -54,6 +54,11 @@ public class Game {
 
     public static void X4TEST() {
         jAg.run5();
+    }
+
+    public static void MOVEROOM(){
+        jAg.leaveRoom();
+        jAg.goToRoom();
     }
 
 

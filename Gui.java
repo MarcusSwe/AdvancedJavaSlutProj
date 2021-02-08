@@ -102,6 +102,9 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "test6":
                         Game.X4TEST();
                         break;
+                    case "MOVEROOM":
+                        Game.MOVEROOM();
+                        break;
                     default:
                         System.out.println("fel kommando!");
                 }
