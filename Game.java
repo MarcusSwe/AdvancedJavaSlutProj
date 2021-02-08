@@ -15,6 +15,11 @@ public class Game {
         Person Freddy = new Person("Freddy", 100, xTest);
         Person TureSventon = new Person("Ture Sventon", 400, xTest);
 
+        Room rum1 = new Room();
+        Room rum2 = new Room();
+        Room rum3 = new Room();
+        Room rum4 = new Room();
+
         Update updateGUI = new Update(xTest);
 
 
@@ -47,6 +52,10 @@ public class Game {
     }
     public static void X3TEST() {
         jAg.run4();
+    }
+
+    public static void X4TEST() {
+        jAg.run5();
     }
 
 

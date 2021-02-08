@@ -37,6 +37,11 @@ public class Player {
         this.pool2.shutdown();
     }
 
+    public void run5(){
+        alpha.setRoom("COHH");
+    }
+
+
     public void startT1() {
         this.pool2 = new ScheduledThreadPoolExecutor(2);
         pool2.scheduleAtFixedRate(new segHej(), 1, 5, TimeUnit.SECONDS);

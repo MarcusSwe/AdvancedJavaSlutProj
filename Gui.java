@@ -99,6 +99,11 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "test5":
                         Game.X3TEST();
                         break;
+                    case "test6":
+                        Game.X4TEST();
+                        break;
+                    default:
+                        System.out.println("fel kommando!");
                 }
                 //gör till switch sats för dem olika kommandon och köra metoder..
                /* if(Objects.equals("test", this.command)){
