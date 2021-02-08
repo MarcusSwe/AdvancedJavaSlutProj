@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -8,7 +9,7 @@ public class Inventory {
     private int test = 0;
 
     private int[] streamtest = {1,2,3,4,4,5};
-    private String[] roomtest = {"ost","bobo","","","no"};
+    private String[] roomtest = {"ost","bobo","",""};
 
     public Inventory(int y){
 
@@ -40,7 +41,10 @@ public class Inventory {
   public void setRoom(String y){
         Stream<String> myStream2 = Stream.of(this.roomtest);
         this.roomtest = myStream2
-                .map(x -> y)
+                .map(x -> {if(x == ""){
+                    return y;
+                } else return x;
+                 })
                 .collect(Collectors.toList()).toArray(new String[0]);
 
 
