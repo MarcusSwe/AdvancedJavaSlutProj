@@ -20,7 +20,7 @@ public class Game {
 
         Update updateGUI = new Update(xTest);
 
-
+        rum1.setRoom("MEEEEE");
 
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
         pool.scheduleAtFixedRate(updateGUI ,6,6, TimeUnit.SECONDS);

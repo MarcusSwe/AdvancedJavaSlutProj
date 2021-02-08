@@ -10,6 +10,7 @@ public class Room {
 
     public Room(String x){
         this.roomname = x;
+
     }
 
 
@@ -22,14 +23,16 @@ public class Room {
                 } else return x;
                 })
                 .distinct()
+                .collect(Collectors.toList()).toArray(new String[4]);
+
+        Stream<String> myStream3 = Stream.of(this.roomtest);
+
+        this.roomtest = myStream3
                 .map(x -> {if(x == null){
                     return "";
                 } else return x;
                 })
-
                 .collect(Collectors.toList()).toArray(new String[4]);
-
-
 
     }
 
