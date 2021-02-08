@@ -17,15 +17,16 @@ public class Room {
         Stream<String> myStream2 = Stream.of(this.roomtest);
 
         this.roomtest = myStream2
-                .distinct()
-                .map(x -> {if(x == ""){
+                .map(x -> {if(x == "" || x == null){
                     return y;
                 } else return x;
                 })
+                .distinct()
                 .map(x -> {if(x == null){
                     return "";
                 } else return x;
                 })
+
                 .collect(Collectors.toList()).toArray(new String[4]);
 
 

@@ -21,6 +21,7 @@ public class Person extends Npc implements Runnable {
 
     public void goToRoom(){
         int z = (int) ((Math.random()*4)+1);
+
         this.currentrum = z;
         switch(z){
             case 1:
