@@ -76,7 +76,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         }
         private void setUpElements(){
             this.panel = new JPanel(new GridLayout(4,3));
-            this.showRoom = new JTextArea("Room: ");
+            this.showRoom = new JTextArea("Rum ett: ");
             this.showPersons = new JTextArea("Persons");
             this.inventory = new JTextArea("Inventory");
             this.input = new JTextField("Give command");
@@ -102,11 +102,14 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "test5":
                         Game.X3TEST();
                         break;
-                    case "test6":
-                        Game.X4TEST();
-                        break;
                     case "MOVEROOM":
                         Game.MOVEROOM();
+                        break;
+                    case "ADDITEMS":
+                        Game.randomItemsToRooms();
+                        break;
+                    case "PRINTITEMS":
+                        Game.printItemTest();
                         break;
                     default:
                         System.out.println("fel kommando!");

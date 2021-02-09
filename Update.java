@@ -11,9 +11,9 @@ public class Update implements Runnable{
     @Override
 
     public void run(){
-        System.out.println(this.boom.getInt());
+       // System.out.println(this.boom.getInt());
        // System.out.println(Arrays.toString(this.boom.getRoom()));
-        System.out.println(Arrays.toString(this.boom.getStream()));
+        //System.out.println(Arrays.toString(this.boom.getStream()));
 
         System.out.println(Game.rum1.getRoom());
         System.out.println(Game.rum2.getRoom());

@@ -15,13 +15,11 @@ public class Game {
     static Gui gui = new Gui();
 
     public Game(){
-
-
-
-
         Update updateGUI = new Update(xTest);
 
         rum1.setRoom("MEEEEE");
+
+
 
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
         pool.scheduleAtFixedRate(updateGUI ,6,6, TimeUnit.SECONDS);
@@ -29,13 +27,20 @@ public class Game {
         pool.scheduleAtFixedRate(Freddy ,1,8, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(TureSventon ,1,8, TimeUnit.SECONDS);
 
-
-
-
-
     }
 
-     public static void UTEST() {
+    public static void randomItemsToRooms(){
+        Container doorToFinish = new Container("Door", true, true);
+        Key keyToDoor = new Key("KeyToUnlock", false, false);
+        rum1.addRoomItem(keyToDoor);
+    }
+
+    public static void printItemTest(){
+        System.out.println(rum1.showRoomItem());
+    }
+
+
+    public static void UTEST() {
          jAg.run();
     }
 
@@ -53,9 +58,9 @@ public class Game {
         jAg.run4();
     }
 
-    public static void X4TEST() {
+    /*public static void X4TEST() {
         jAg.run5();
-    }
+    }*/
 
     public static void MOVEROOM(){
         jAg.leaveRoom();

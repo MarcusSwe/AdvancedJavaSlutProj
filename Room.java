@@ -3,14 +3,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Room {
+public class Room<q> {
 
     private String[] roomtest = {"","","",""};
     private String roomname;
+    Inventory roomItems;
 
     public Room(String x){
         this.roomname = x;
-
+        this.roomItems = new Inventory(20);
+        this.roomItems.xObjects[0] = new GameObject("TEST",false,false);
     }
 
 
@@ -33,7 +35,6 @@ public class Room {
                 } else return x;
                 })
                 .collect(Collectors.toList()).toArray(new String[4]);
-
     }
 
     public synchronized void leaveRoom(String y){
@@ -44,7 +45,6 @@ public class Room {
                 } else return x;
                 })
                 .collect(Collectors.toList()).toArray(new String[4]);
-
     }
 
     public synchronized String getRoom() {
@@ -60,6 +60,14 @@ public class Room {
         return roomname +": "+ rumNamn;
     }
 
+    public synchronized void addRoomItem(GameObject x){
+        this.roomItems.xObjects[0] = x;
+    }
+
+    public synchronized String showRoomItem(){
+        String q = this.roomItems.xObjects[0].getItemName();
+        return q;
+    }
 
 
 }

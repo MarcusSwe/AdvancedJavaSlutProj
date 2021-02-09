@@ -5,24 +5,27 @@ import java.util.concurrent.TimeUnit;
 public class Player {
 
     Inventory alpha;
-    int yu;
+    int size;
     ScheduledThreadPoolExecutor pool2;
     Future<?> future;
     String xname;
     int currentrum;
+    Inventory playerItems;
+
 
     public Player(Inventory g, int x, String o, int r) {
         this.alpha = g;
-        this.yu = x;
+        this.size = x;
         this.xname = o;
         this.currentrum = r;
+        this.playerItems = new Inventory(5);
         }
 
 
 
     public void run() {
-       alpha.setInt(this.yu);
-       alpha.setStream(2);
+      // alpha.setInt(this.yu);
+       //alpha.setStream(2);
     }
 
     public void run2(){
@@ -39,9 +42,9 @@ public class Player {
         this.pool2.shutdown();
     }
 
-    public void run5(){
+    /*public void run5(){
         alpha.setRoom("COHH");
-    }
+    }*/
 
 
     public void startT1() {

@@ -6,20 +6,29 @@ import java.util.stream.Stream;
 
 public class Inventory {
 
-    private int test = 0;
 
-    private int[] streamtest = {1,2,3,4,4,5};
-    private String[] roomtest = {"ost","bobo","",""};
+    private int size = 0;
+    GameObject[] xObjects;
+
+    //private int[] streamtest = {1,2,3,4,4,5};
+    //private String[] roomtest = {"ost","bobo","",""};
 
     public Inventory(int y){
-
-    this.test = y;
-
-
-
+    this.size = y;
+    this.xObjects = new GameObject[size];
     }
 
-    public synchronized int getInt() {
+
+
+
+
+
+
+
+
+
+
+    /*public synchronized int getInt() {
         return this.test;
     }
 
@@ -53,6 +62,6 @@ public class Inventory {
         return this.roomtest;
     }
 
-
+*/
 
 }
