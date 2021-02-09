@@ -5,7 +5,6 @@ public class GameObject {
     private String item;
 
 
-
     public GameObject(String y, Boolean x, Boolean z){
         this.lockedOrNot = x;
         this.item = y;
@@ -28,6 +27,14 @@ public class GameObject {
 
     public void setItemName(String n){
         this.item = n;
+    }
+
+    public boolean isStationary() {
+        return stationary;
+    }
+
+    public void setStationary(boolean stationary) {
+        this.stationary = stationary;
     }
 
 }

@@ -111,6 +111,9 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "PRINTITEMS":
                         Game.printItemTest();
                         break;
+                    case "REMOVEITEMS":
+                        Game.removeItem();
+                        break;
                     default:
                         System.out.println("fel kommando!");
                 }

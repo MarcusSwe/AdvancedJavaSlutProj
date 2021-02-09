@@ -27,11 +27,14 @@ public class Game {
         pool.scheduleAtFixedRate(Freddy ,1,8, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(TureSventon ,1,8, TimeUnit.SECONDS);
 
+
+
     }
 
     public static void randomItemsToRooms(){
         Container doorToFinish = new Container("Door", true, true);
         Key keyToDoor = new Key("KeyToUnlock", false, false);
+
         rum1.addRoomItem(keyToDoor);
     }
 
@@ -39,6 +42,10 @@ public class Game {
         System.out.println(rum1.showRoomItem());
     }
 
+    public static void removeItem(){
+        GameObject emptyCell = new GameObject("XXXX", false, false);
+        rum1.removeRoomItem(emptyCell);
+    }
 
     public static void UTEST() {
          jAg.run();

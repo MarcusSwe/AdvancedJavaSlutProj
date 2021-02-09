@@ -19,15 +19,6 @@ public class Inventory {
     }
 
 
-
-
-
-
-
-
-
-
-
     /*public synchronized int getInt() {
         return this.test;
     }
