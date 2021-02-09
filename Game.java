@@ -1,14 +1,15 @@
+import java.util.Arrays;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Game {
 
-    static Inventory xTest = new Inventory(10);
+    static Inventory xTest = new Inventory(100);
     static Player jAg = new Player(xTest, 1000000, "MEEEEE", 1);
-    static Room rum1 = new Room("Rum ett");
-    static Room rum2 = new Room("Rum två");
-    static Room rum3 = new Room("Rum tre");
-    static Room rum4 = new Room("Rum fyra");
+    static Room rum1 = new Room("Rum ett", xTest);
+    static Room rum2 = new Room("Rum två", xTest);
+    static Room rum3 = new Room("Rum tre", xTest);
+    static Room rum4 = new Room("Rum fyra", xTest);
     static Person Jason = new Person("Jason", 10, xTest,1);
     static Person Freddy = new Person("Freddy", 100, xTest,2);
     static Person TureSventon = new Person("Ture Sventon", 400, xTest,2);
@@ -25,6 +26,15 @@ public class Game {
         rum3.defaultFillInventory();
         rum4.defaultFillInventory();
 
+        Arrays.fill(xTest.xObjects, Game.emptyCell);
+
+        Container doorToFinish = new Container("Door", true, true);
+        Key keyToDoor = new Key("KeyToUnlock", false, false);
+
+        xTest.xObjects[0] = keyToDoor;
+
+
+
 
 
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
@@ -38,10 +48,7 @@ public class Game {
     }
 
     public static void randomItemsToRooms(){
-        Container doorToFinish = new Container("Door", true, true);
-        Key keyToDoor = new Key("KeyToUnlock", false, false);
-
-        rum1.addRoomItem(keyToDoor);
+        rum1.addRoomItem(xTest.xObjects[0]);
     }
 
     public static void printItemTest(){
@@ -50,7 +57,7 @@ public class Game {
 
     public static void removeItem(){
 
-        rum1.removeRoomItem(emptyCell);
+        rum1.removeRoomItem(xTest.xObjects[0]);
     }
 
     public static void UTEST() {

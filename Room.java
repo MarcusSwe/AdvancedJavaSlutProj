@@ -8,10 +8,13 @@ public class Room<q> {
     private String[] roomtest = {"","","",""};
     private String roomname;
     Inventory roomItems;
+    Inventory iTest;
 
-    public Room(String x){
+    public Room(String x, Inventory m){
         this.roomname = x;
+        this.iTest = m;
         this.roomItems = new Inventory(20);
+
 
 
 
@@ -69,18 +72,21 @@ public class Room<q> {
     public synchronized void addRoomItem(GameObject t){
      Stream<GameObject> myStreamX = Stream.of(this.roomItems.xObjects);
      this.roomItems.xObjects = myStreamX
-             .map(x -> {x.setItemName("XXXXXX"); return x;})
-             .map(x -> {x.setBoolean(false); return x;})
-             .map(x -> {x.setStationary(false); return x;})
-             .collect(Collectors.toList()).toArray(new GameObject[0]);
-
-
+             .map(x -> t)
+            //  .map(x -> {x.setItemName("XXXXXX"); return x;})
+         //    .map(x -> {x.setBoolean(false); return x;})
+           //  .map(x -> {x.setStationary(false); return x;})
+             .collect(Collectors.toList()).toArray(new GameObject[20]);
     }
 
     public synchronized void removeRoomItem(GameObject d){
-
-
-
+        Stream<GameObject> myStreamX = Stream.of(this.roomItems.xObjects);
+        this.roomItems.xObjects = myStreamX
+                .map(x -> {if(x.getItemName() == d.getItemName()){
+                    return Game.emptyCell;
+                } else return x;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[20]);
     }
 
     public synchronized String showRoomItem(){
