@@ -72,11 +72,25 @@ public class Room<q> {
     public synchronized void addRoomItem(GameObject t){
      Stream<GameObject> myStreamX = Stream.of(this.roomItems.xObjects);
      this.roomItems.xObjects = myStreamX
-             .map(x -> t)
+             .map(x -> {if(x.getItemName() == Game.emptyCell.getItemName()){
+                 return t;
+             } else return x;
+             })
+             .distinct()
             //  .map(x -> {x.setItemName("XXXXXX"); return x;})
          //    .map(x -> {x.setBoolean(false); return x;})
            //  .map(x -> {x.setStationary(false); return x;})
              .collect(Collectors.toList()).toArray(new GameObject[20]);
+
+        Stream<GameObject> myStreamX2 = Stream.of(this.roomItems.xObjects);
+
+        this.roomItems.xObjects = myStreamX2
+                .map(x -> {if(x == null){
+                    return Game.emptyCell;
+                } else return x;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[20]);
+
     }
 
     public synchronized void removeRoomItem(GameObject d){
