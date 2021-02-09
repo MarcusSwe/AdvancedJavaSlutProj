@@ -117,7 +117,20 @@ public class Room<q> {
             rumItems = rumItems +" " + showItems[i].getItemName();
         }
         return roomname +": " + rumItems +"\n";
+    }
 
+    public synchronized GameObject getItemNPC(){
+        Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
+        GameObject[] showItems = myStreamR
+                .distinct()
+                .filter(x -> {if(x == Game.emptyCell){
+                    return false;
+                } else return true;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+        GameObject npcPickup = showItems[(int) (Math.random()* showItems.length)];
+        this.removeRoomItem(npcPickup);
+      return npcPickup;
     }
 
     public void defaultFillInventory(){
