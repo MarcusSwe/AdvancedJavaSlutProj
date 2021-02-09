@@ -12,12 +12,18 @@ public class Game {
     static Person Jason = new Person("Jason", 10, xTest,1);
     static Person Freddy = new Person("Freddy", 100, xTest,2);
     static Person TureSventon = new Person("Ture Sventon", 400, xTest,2);
+    static GameObject emptyCell = new GameObject("emptycell", false, false);
     static Gui gui = new Gui();
 
     public Game(){
         Update updateGUI = new Update(xTest);
 
         rum1.setRoom("MEEEEE");
+
+        rum1.defaultFillInventory();
+        rum2.defaultFillInventory();
+        rum3.defaultFillInventory();
+        rum4.defaultFillInventory();
 
 
 
@@ -43,7 +49,7 @@ public class Game {
     }
 
     public static void removeItem(){
-        GameObject emptyCell = new GameObject("XXXX", false, false);
+
         rum1.removeRoomItem(emptyCell);
     }
 

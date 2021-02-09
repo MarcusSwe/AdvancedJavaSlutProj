@@ -11,7 +11,8 @@ public class Room<q> {
 
     public Room(String x){
         this.roomname = x;
-        this.roomItems = new Inventory(2);
+        this.roomItems = new Inventory(20);
+
 
 
 
@@ -68,7 +69,7 @@ public class Room<q> {
     public synchronized void addRoomItem(GameObject t){
      Stream<GameObject> myStreamX = Stream.of(this.roomItems.xObjects);
      this.roomItems.xObjects = myStreamX
-             .map(x -> {x.setItemName("emptycell"); return x;})
+             .map(x -> {x.setItemName("XXXXXX"); return x;})
              .map(x -> {x.setBoolean(false); return x;})
              .map(x -> {x.setStationary(false); return x;})
              .collect(Collectors.toList()).toArray(new GameObject[0]);
@@ -77,8 +78,7 @@ public class Room<q> {
     }
 
     public synchronized void removeRoomItem(GameObject d){
-        this.roomItems.xObjects[0] = d;
-        this.roomItems.xObjects[1] = d;
+
 
 
     }
@@ -88,7 +88,9 @@ public class Room<q> {
         return q;
     }
 
-
+    public void defaultFillInventory(){
+        Arrays.fill(this.roomItems.xObjects, Game.emptyCell);
+    }
 
 
 }
