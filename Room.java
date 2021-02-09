@@ -104,8 +104,20 @@ public class Room<q> {
     }
 
     public synchronized String showRoomItem(){
-        String q = this.roomItems.xObjects[0].getItemName();
-        return q;
+        Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
+        GameObject[] showItems = myStreamR
+                .distinct()
+                .filter(x -> {if(x == Game.emptyCell){
+                    return false;
+                } else return true;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+        String rumItems = "";
+        for(int i = 0; i < showItems.length; i++){
+            rumItems = rumItems +" " + showItems[i].getItemName();
+        }
+        return roomname +": " + rumItems +"\n";
+
     }
 
     public void defaultFillInventory(){

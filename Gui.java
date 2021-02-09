@@ -48,8 +48,8 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         public void setShowPersons(Person person){
             this.showPersons.setText(person.toString());
         }
-        public void setShowInventory(Inventory i){
-            this.input.setText(i.toString());
+        public void setShowInventory(String i){
+            this.inventory.setText(i);
         }
         public void setShowRoom(String roomDescription){
             this.showRoom.setText(roomDescription);
@@ -78,7 +78,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.panel = new JPanel(new GridLayout(4,3));
             this.showRoom = new JTextArea("Rum ett: ");
             this.showPersons = new JTextArea("Persons");
-            this.inventory = new JTextArea("Inventory");
+            this.inventory = new JTextArea("");
             this.input = new JTextField("Give command");
             this.showPersons.setEditable(false);
             this.showRoom.setEditable(false);

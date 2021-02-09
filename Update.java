@@ -36,6 +36,14 @@ public class Update implements Runnable{
                 break;
         }
 
+        String showRooms = Game.rum1.showRoomItem() + Game.rum2.showRoomItem() +
+                           Game.rum3.showRoomItem() + Game.rum4.showRoomItem();
+        Game.gui.setShowInventory(showRooms);
+
+
+
+
+
 
 
     }

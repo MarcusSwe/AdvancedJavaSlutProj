@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Person extends Npc implements Runnable {
     String xname;
     int size;
@@ -59,6 +61,10 @@ public class Person extends Npc implements Runnable {
                 Game.rum4.leaveRoom(this.xname);
                 break;
         }
+    }
+
+    public void defaultFillInventory(){
+        Arrays.fill(this.npcItems.xObjects, Game.emptyCell);
     }
 
 }

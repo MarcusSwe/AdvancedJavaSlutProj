@@ -25,6 +25,10 @@ public class Game {
         rum2.defaultFillInventory();
         rum3.defaultFillInventory();
         rum4.defaultFillInventory();
+        jAg.defaultFillInventory();
+        Jason.defaultFillInventory();
+        Freddy.defaultFillInventory();
+        TureSventon.defaultFillInventory();
 
         Arrays.fill(xTest.xObjects, Game.emptyCell);
 
@@ -32,6 +36,7 @@ public class Game {
         Key keyToDoor = new Key("KeyToUnlock", false, false);
 
         xTest.xObjects[0] = keyToDoor;
+        xTest.xObjects[1] = doorToFinish;
 
 
 
@@ -49,6 +54,10 @@ public class Game {
 
     public static void randomItemsToRooms(){
         rum1.addRoomItem(xTest.xObjects[0]);
+        rum2.addRoomItem(xTest.xObjects[1]);
+        rum3.addRoomItem(xTest.xObjects[0]);
+        rum4.addRoomItem(xTest.xObjects[0]);
+
     }
 
     public static void printItemTest(){
@@ -58,6 +67,9 @@ public class Game {
     public static void removeItem(){
 
         rum1.removeRoomItem(xTest.xObjects[0]);
+        rum2.removeRoomItem(xTest.xObjects[1]);
+        rum3.removeRoomItem(xTest.xObjects[0]);
+        rum4.removeRoomItem(xTest.xObjects[0]);
     }
 
     public static void UTEST() {

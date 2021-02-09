@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -103,6 +104,10 @@ public class Player {
 
     public int giveRoom(){
         return this.currentrum;
+    }
+
+    public void defaultFillInventory(){
+        Arrays.fill(this.playerItems.xObjects, Game.emptyCell);
     }
 
 }
