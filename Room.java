@@ -50,10 +50,14 @@ public class Room {
     public synchronized String getRoom() {
         Stream<String> myStream3 = Stream.of(this.roomtest);
         String[] currentRoomMembers = myStream3
-                //.distinct()
-                .collect(Collectors.toList()).toArray(new String[4]);
+                .distinct()
+                .collect(Collectors.toList()).toArray(new String[0]);
+        String rumNamn = "";
+        for(int i = 0; i < currentRoomMembers.length; i++){
+            rumNamn = rumNamn +"\n" + currentRoomMembers[i];
+        }
 
-        return roomname +" befinner sig "+ Arrays.toString(currentRoomMembers) +" i!";
+        return roomname +": "+ rumNamn;
     }
 
 

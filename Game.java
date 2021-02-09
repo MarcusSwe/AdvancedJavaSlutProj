@@ -2,7 +2,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Game {
-    Gui gui;
+
     static Inventory xTest = new Inventory(10);
     static Player jAg = new Player(xTest, 1000000, "MEEEEE", 1);
     static Room rum1 = new Room("Rum ett");
@@ -12,9 +12,10 @@ public class Game {
     static Person Jason = new Person("Jason", 10, xTest,1);
     static Person Freddy = new Person("Freddy", 100, xTest,2);
     static Person TureSventon = new Person("Ture Sventon", 400, xTest,2);
+    static Gui gui = new Gui();
 
     public Game(){
-        this.gui = new Gui();
+
 
 
 

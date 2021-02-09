@@ -19,6 +19,25 @@ public class Update implements Runnable{
         System.out.println(Game.rum2.getRoom());
         System.out.println(Game.rum3.getRoom());
         System.out.println(Game.rum4.getRoom());
+
+
+        switch(Game.jAg.giveRoom()){
+            case 1:
+                Game.gui.setShowRoom(Game.rum1.getRoom());
+                break;
+            case 2:
+                Game.gui.setShowRoom(Game.rum2.getRoom());
+                break;
+            case 3:
+                Game.gui.setShowRoom(Game.rum3.getRoom());
+                break;
+            case 4:
+                Game.gui.setShowRoom(Game.rum4.getRoom());
+                break;
+        }
+
+
+
     }
 
 }

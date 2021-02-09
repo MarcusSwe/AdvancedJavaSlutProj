@@ -29,6 +29,9 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.add(panel);
             this.setVisible(true);
             this.setResizable(false);
+
+
+
         }
 
         //Returnera det senaste commitade kommandot
@@ -41,16 +44,16 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         }*/
 
         //Här kan man updatera respektive fält:
-        public void setShowRoom(String roomDescription){
-            this.showRoom.setText(roomDescription);
-         }
+
         public void setShowPersons(Person person){
             this.showPersons.setText(person.toString());
         }
         public void setShowInventory(Inventory i){
             this.input.setText(i.toString());
         }
-
+        public void setShowRoom(String roomDescription){
+            this.showRoom.setText(roomDescription);
+        }
         //Add person to room
         public void setPerson(Person p){
             this.showPersons.setText(p.toString());

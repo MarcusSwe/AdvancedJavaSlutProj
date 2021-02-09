@@ -1,5 +1,3 @@
-import jdk.nashorn.api.tree.FunctionCallTree;
-
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -100,7 +98,9 @@ public class Player {
         }
     }
 
-
+    public int giveRoom(){
+        return this.currentrum;
+    }
 
 }
 
