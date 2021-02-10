@@ -94,6 +94,7 @@ public class Room<q> {
                 })
                 .collect(Collectors.toList()).toArray(new GameObject[20]);
          passaItem++;
+         System.out.println(passaItem + "           CPPPPPPPPPPPPPPPPPPPPPPPPPPPp");
     }
 
     public synchronized void removeRoomItem(GameObject d){
@@ -141,10 +142,10 @@ public class Room<q> {
     }
 
     public synchronized boolean passaItem(){
-        this.updateRoomItems();
-        this.passaItem = this.showItems.length;
+
         if (this.passaItem >0) {
             this.passaItem--;
+            System.out.println(passaItem + "          CPPPPPPPPPPPPPPPPPPPPPPPPPPPp");
             return true;
         } else return false;
     }
