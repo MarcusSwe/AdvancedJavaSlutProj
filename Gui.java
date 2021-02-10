@@ -108,6 +108,12 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "ADDITEMS":
                         Game.randomItemsToRooms();
                         break;
+                    case "ADDITEMS2":
+                        Game.randomItemsToRooms2();
+                        break;
+                    case "ADDITEMS3":
+                        Game.randomItemsToRooms3();
+                        break;
                     case "PRINTITEMS":
                         Game.printItemTest();
                         break;

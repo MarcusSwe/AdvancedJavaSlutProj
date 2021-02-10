@@ -6,9 +6,9 @@ public class Person<showItems> extends Npc implements Runnable {
     String xname;
     int size;
     Inventory iTest;
-    int currentrum;
+    int currentrum = 1;
     Inventory npcItems;
-    GameObject[] showItems;
+    GameObject[] showItems = new GameObject[2];
     boolean hittacpfel = false;
 
     public Person(String xname, int y, Inventory o, int x){
@@ -23,25 +23,29 @@ public class Person<showItems> extends Npc implements Runnable {
     public void run(){
         boolean pickUpItemOrNot = (Math.random() < 0.5);
 
-        //this.showItems();
 
-       /* if(pickUpItemOrNot && this.showItems.length > 0) {
+
+      /* if(pickUpItemOrNot && this.showItems.length > 0) {
             //dropNPCItem(this.showItems[(int) ((Math.random()*2))]);
             //dropNPCItem(this.showItems[0]);
-            dropNPCItem(Game.xTest.xObjects[0]);
+            //this.dropNPCItem(Game.xTest.xObjects[0]);
+           System.out.println("CPPPPPPPPPPPPPPPP");
         }*/
-
-
-
         this.leaveRoom();
         this.goToRoom();
 
+
+        //this.dropNPCItem(Game.xTest.xObjects[1]);
+
+
+      // getRoomItem();
+
         //this.showItems();
 
-       /* if(pickUpItemOrNot && this.showItems.length < 2) {
+      if(this.showItems.length < 2) {
             getRoomItem();
-        }*/
-        getRoomItem();
+        }
+
     }
 
     public void goToRoom(){
@@ -103,12 +107,14 @@ public class Person<showItems> extends Npc implements Runnable {
                 } else return x;
                 })
                 .collect(Collectors.toList()).toArray(new GameObject[2]);
+        this.showItems();
     }
 
 
 
     public void defaultFillInventory(){
         Arrays.fill(this.npcItems.xObjects, Game.emptyCell);
+        Arrays.fill(this.showItems, Game.emptyCell);
     }
 
     public void getRoomItem(){
@@ -149,22 +155,26 @@ public class Person<showItems> extends Npc implements Runnable {
 
         switch(this.currentrum){
             case 1:
+                System.out.println("111111111111");
                     Game.rum1.addRoomItem(d);
                 break;
             case 2:
+                System.out.println("2222222222222");
                     Game.rum2.addRoomItem(d);
                 break;
             case 3:
+                System.out.println("3333333333333");
                     Game.rum3.addRoomItem(d);
                 break;
             case 4:
+                System.out.println("444444444444");
                     Game.rum4.addRoomItem(d);
                 break;
         }
-
+       this.showItems();
     }
 
-    public void showItems(){
+    public synchronized void showItems(){
         Stream<GameObject> myStreamRX = Stream.of(this.npcItems.xObjects);
         this.showItems = myStreamRX
                 .distinct()

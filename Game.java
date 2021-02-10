@@ -30,13 +30,16 @@ public class Game {
         Freddy.defaultFillInventory();
         TureSventon.defaultFillInventory();
 
+
         Arrays.fill(xTest.xObjects, Game.emptyCell);
 
         Container doorToFinish = new Container("Door", true, true);
         Key keyToDoor = new Key("KeyToUnlock", false, false);
+        GameObject CP = new GameObject("SAAAAAB", false, false);
 
         xTest.xObjects[0] = keyToDoor;
         xTest.xObjects[1] = doorToFinish;
+        xTest.xObjects[2] = CP;
 
 
         //* dela ut items till rummet här innan updateroomsItems...
@@ -60,8 +63,16 @@ public class Game {
 
     public static void randomItemsToRooms(){
         rum1.addRoomItem(xTest.xObjects[0]);
-
     }
+
+    public static void randomItemsToRooms2(){
+        rum1.addRoomItem(xTest.xObjects[1]);
+    }
+
+    public static void randomItemsToRooms3(){
+        rum1.addRoomItem(xTest.xObjects[2]);
+    }
+
 
     public static void printItemTest(){
         System.out.println(rum1.showRoomItem());

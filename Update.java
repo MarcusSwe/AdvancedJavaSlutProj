@@ -36,8 +36,8 @@ public class Update implements Runnable{
                 break;
         }
 
-        String showRooms = Game.rum1.showRoomItem() + Game.rum2.showRoomItem() +
-                           Game.rum3.showRoomItem() + Game.rum4.showRoomItem();
+        String showRooms = Game.rum1.showRoomItem() +" " + Game.rum2.showRoomItem() + " "+
+                           Game.rum3.showRoomItem() + " " + Game.rum4.showRoomItem();
 
 
         String showNpcItems = Game.Freddy.printNPCItems() + Game.TureSventon.printNPCItems() +
