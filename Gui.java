@@ -53,6 +53,9 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         public void setShowPersons(String person){
             this.showPersons.setText(person);
         }
+        public void setShowPersons2(String person){
+            this.status.setText(person);
+        }
         public void setShowInventory(String i){
             this.inventory.setText(i);
         }
@@ -89,7 +92,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.showPersons = new JTextArea();
             this.inventory = new JTextArea("");
             this.inventory2 = new JTextArea("");
-            this.status = new JTextArea("Status: ");
+            this.status = new JTextArea("Status: Find key and find door to win! Pickup item with 'P itemname' \n or drop with 'D itemname'");
             this.input = new JTextField("Give command");
             //this.input2 = new JTextField("Type item to drop or pickup");
             this.showPersons.setEditable(false);
@@ -99,6 +102,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.status.setEditable(false);
 
             ActionListener inputListener = e -> {
+                this.setShowPersons2("Status: Find key and find door to win! Pickup item with 'P itemname' \n or drop with 'D itemname'");
                 this.command = input.getText();
                 switch (this.command){
                     case "test":
@@ -134,8 +138,62 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "REMOVEITEMS":
                         Game.removeItem();
                         break;
+                    case "P Door":
+                        Game.pDoor();
+                        break;
+                    case "P KeyToUnlock":
+                        Game.pKeyToUnlock();
+                        break;
+                    case "P Paraply":
+                        Game.pParaply();
+                        break;
+                    case "P Donut":
+                        Game.pDonut();
+                        break;
+                    case "P Motorsåg":
+                        Game.pMotorsag();
+                        break;
+                    case "P Penna":
+                        Game.pPenna();
+                        break;
+                    case "P Andriod phone":
+                        Game.pAndriod();
+                        break;
+                    case "P Tröjja":
+                        Game.pTrojja();
+                        break;
+                    case "P Colaburk":
+                        Game.pColaburk();
+                        break;
+                    case "D Door":
+                        Game.dDoor();
+                        break;
+                    case "D KeyToUnlock":
+                        Game.dKeyToUnlock();
+                        break;
+                    case "D Paraply":
+                        Game.dParaply();
+                        break;
+                    case "D Donut":
+                        Game.dDonut();
+                        break;
+                    case "D Motorsåg":
+                        Game.dMotorsag();
+                        break;
+                    case "D Penna":
+                        Game.dPenna();
+                        break;
+                    case "D Andriod phone":
+                        Game.dAndriod();
+                        break;
+                    case "D Tröjja":
+                        Game.dTrojja();
+                        break;
+                    case "D Colaburk":
+                        Game.dColaburk();
+                        break;
                     default:
-                        System.out.println("fel kommando!");
+                        this.setShowPersons2("Fel Kommando!");
                 }
             };
 

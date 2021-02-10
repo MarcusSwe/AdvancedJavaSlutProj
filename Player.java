@@ -141,7 +141,7 @@ public class Player {
                     } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
                     break;
             }
-        } else Game.gui.setShowPersons("Mitt inventory: "+Game.jAg.printNPCItems() + "Kan ej ta upp fler items, max 5!");
+        } else Game.gui.setShowPersons2("Kan ej ta upp fler items, max 5!");
     }
 
     public void addRoomItem(GameObject t){

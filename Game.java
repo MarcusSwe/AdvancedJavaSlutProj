@@ -140,6 +140,61 @@ public class Game {
         jAg.goToRoom();
     }
 
+    public static void pDoor(){
+
+    }
+    public static void pKeyToUnlock(){
+
+    }
+    public static void pParaply(){
+
+    }
+    public static void pDonut(){
+
+    }
+    public static void pMotorsag(){
+
+    }
+    public static void pPenna(){
+
+    }
+    public static void pAndriod(){
+
+    }
+    public static void pTrojja(){
+
+    }
+    public static void pColaburk(){
+
+    }
+
+    public static void dDoor(){
+
+    }
+    public static void dKeyToUnlock(){
+
+    }
+    public static void dParaply(){
+
+    }
+    public static void dDonut(){
+
+    }
+    public static void dMotorsag(){
+
+    }
+    public static void dPenna(){
+
+    }
+    public static void dAndriod(){
+
+    }
+    public static void dTrojja(){
+
+    }
+    public static void dColaburk(){
+
+    }
 
 
   /* flytta över denna till person klassen.. Man kanske har runnable här utan använder sig av getters och setters där man skickar info och flyttar dem till olika rum eftersom han inte har runnable..
