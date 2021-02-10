@@ -13,6 +13,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         private JPanel panel;
         private JTextArea showRoom;
         private JTextArea showPersons;
+        private JTextArea status;
         private JTextField input;
         //private JTextField input2;
         private JTextArea inventory;
@@ -20,6 +21,8 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         private String command;
         private boolean gotCommand;
         private JButton button;
+        private JButton start;
+        private JButton load;
         public Gui(){
             this.gotCommand = false;
             this.command = "";
@@ -74,9 +77,11 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.panel.add(input);
             //this.panel.add(input2);
             this.panel.add(button);
+            //this.panel.add(inventory2);
+            this.panel.add(status);
+            this.panel.add(start);
+            this.panel.add(load);
             this.panel.add(inventory);
-            this.panel.add(inventory2);
-
         }
         private void setUpElements(){
             this.panel = new JPanel(new GridLayout(4,3));
@@ -84,12 +89,14 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.showPersons = new JTextArea();
             this.inventory = new JTextArea("");
             this.inventory2 = new JTextArea("");
+            this.status = new JTextArea("Status: ");
             this.input = new JTextField("Give command");
             //this.input2 = new JTextField("Type item to drop or pickup");
             this.showPersons.setEditable(false);
             this.showRoom.setEditable(false);
             this.inventory.setEditable(false);
             this.inventory2.setEditable(false);
+            this.status.setEditable(false);
 
             ActionListener inputListener = e -> {
                 this.command = input.getText();
@@ -136,6 +143,10 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
 
             this.button = new JButton("commit");
             this.button.addActionListener(inputListener);
+            this.start = new JButton("Start");
+            //this.button.addActionListener(inputListener);
+            this.load = new JButton("Load");
+            //this.button.addActionListener(inputListener);
 
         }
 
