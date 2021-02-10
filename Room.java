@@ -64,10 +64,21 @@ public class Room<q> {
                 .collect(Collectors.toList()).toArray(new String[0]);
         rumNamn = "";
         for(int i = 0; i < currentRoomMembers.length; i++){
-            rumNamn = rumNamn +"\n" + currentRoomMembers[i];
+            if(currentRoomMembers[i] == "MEEEEE") {
+                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+"("+Game.jAg.printNPCItems()+")";
+            }
+            if(currentRoomMembers[i] == "Jason") {
+                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+"("+Game.Jason.printNPCItems()+")";
+            }
+            if(currentRoomMembers[i] == "Ture Sventon") {
+                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+"("+Game.TureSventon.printNPCItems()+")";
+            }
+            if(currentRoomMembers[i] == "Freddy") {
+                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+"("+Game.Freddy.printNPCItems()+")";
+            }
         }
 
-        return this.roomname +": "+ this.rumNamn;
+        return this.rumNamn;
     }
 
 

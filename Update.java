@@ -23,16 +23,16 @@ public class Update implements Runnable{
 
         switch(Game.jAg.giveRoom()){
             case 1:
-                Game.gui.setShowRoom(Game.rum1.getRoom());
+                Game.gui.setShowRoom(Game.rum1.showRoomItem() + Game.rum1.getRoom());
                 break;
             case 2:
-                Game.gui.setShowRoom(Game.rum2.getRoom());
+                Game.gui.setShowRoom(Game.rum2.showRoomItem() + Game.rum2.getRoom());
                 break;
             case 3:
-                Game.gui.setShowRoom(Game.rum3.getRoom());
+                Game.gui.setShowRoom(Game.rum3.showRoomItem() + Game.rum3.getRoom());
                 break;
             case 4:
-                Game.gui.setShowRoom(Game.rum4.getRoom());
+                Game.gui.setShowRoom(Game.rum4.showRoomItem() + Game.rum4.getRoom());
                 break;
         }
 
@@ -40,11 +40,11 @@ public class Update implements Runnable{
                            Game.rum3.showRoomItem() + " " + Game.rum4.showRoomItem();
 
 
-        String showNpcItems = Game.Freddy.printNPCItems() + Game.TureSventon.printNPCItems() +
-                              Game.Jason.printNPCItems() + Game.jAg.printNPCItems();
+        String showNpcItems = "Freddy: "+Game.Freddy.printNPCItems() +"\n"+ "Ture Sventon: "+Game.TureSventon.printNPCItems() +"\n" +
+                "Jason: "+Game.Jason.printNPCItems() +"\n" + "MEEEEE: "+Game.jAg.printNPCItems();
 
         Game.gui.setShowInventory(showRooms + showNpcItems);
-
+        Game.gui.setShowPersons("Mitt inventory: "+Game.jAg.printNPCItems());
 
 
 

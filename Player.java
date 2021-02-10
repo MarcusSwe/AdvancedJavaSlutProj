@@ -114,31 +114,34 @@ public class Player {
     }
 
 
-    public void getRoomItem(){
-        switch(this.currentrum){
-            case 1:
-                if(Game.rum1.passaItem()) {
-                    System.out.println("ITEEEEEEEEEEEEEEM ÄR HÄR");
-                    this.addRoomItem(Game.rum1.getItemNPC());
-                    //this.addRoomItem(Game.xTest.xObjects[0]);
-                } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
-                break;
-            case 2:
-                if(Game.rum2.passaItem()) {
-                    this.addRoomItem(Game.rum2.getItemNPC());
-                } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
-                break;
-            case 3:
-                if(Game.rum3.passaItem()) {
-                    this.addRoomItem(Game.rum3.getItemNPC());
-                } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
-                break;
-            case 4:
-                if(Game.rum4.passaItem()) {
-                    this.addRoomItem(Game.rum4.getItemNPC());
-                } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
-                break;
-        }
+    public synchronized void getRoomItem(){
+        this.showItems();
+        if(this.showItems.length < 5) {
+            switch (this.currentrum) {
+                case 1:
+                    if (Game.rum1.passaItem()) {
+                        System.out.println("ITEEEEEEEEEEEEEEM ÄR HÄR");
+                        this.addRoomItem(Game.rum1.getItemNPC());
+                        //this.addRoomItem(Game.xTest.xObjects[0]);
+                    } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
+                    break;
+                case 2:
+                    if (Game.rum2.passaItem()) {
+                        this.addRoomItem(Game.rum2.getItemNPC());
+                    } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
+                    break;
+                case 3:
+                    if (Game.rum3.passaItem()) {
+                        this.addRoomItem(Game.rum3.getItemNPC());
+                    } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
+                    break;
+                case 4:
+                    if (Game.rum4.passaItem()) {
+                        this.addRoomItem(Game.rum4.getItemNPC());
+                    } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
+                    break;
+            }
+        } else Game.gui.setShowPersons("Mitt inventory: "+Game.jAg.printNPCItems() + "Kan ej ta upp fler items, max 5!");
     }
 
     public void addRoomItem(GameObject t){
@@ -149,7 +152,7 @@ public class Player {
                 } else return x;
                 })
                 .distinct()
-                .collect(Collectors.toList()).toArray(new GameObject[2]);
+                .collect(Collectors.toList()).toArray(new GameObject[5]);
 
         Stream<GameObject> myStreamX3333 = Stream.of(this.playerItems.xObjects);
         this.playerItems.xObjects = myStreamX3333
@@ -157,7 +160,7 @@ public class Player {
                     return Game.emptyCell;
                 } else return x;
                 })
-                .collect(Collectors.toList()).toArray(new GameObject[2]);
+                .collect(Collectors.toList()).toArray(new GameObject[5]);
         this.showItems();
     }
 
@@ -185,7 +188,7 @@ public class Player {
         for(int i = 0; i < showItems.length; i++){
             npcItems = npcItems +" " + showItems[i].getItemName();
         }
-        return this.xname +": " + npcItems +"\n";
+        return npcItems;
     }
 
     public void dropNPCItem(GameObject d){

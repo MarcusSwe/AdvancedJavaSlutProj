@@ -14,7 +14,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         private JTextArea showRoom;
         private JTextArea showPersons;
         private JTextField input;
-        private JTextField input2;
+        //private JTextField input2;
         private JTextArea inventory;
         private JTextArea inventory2;
         private String command;
@@ -24,7 +24,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.gotCommand = false;
             this.command = "";
             this.setTitle("Game");
-            this.setSize(800, 600);
+            this.setSize(1000, 600);
             this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             setUpElements();
             setUpPanel();
@@ -47,8 +47,8 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
 
         //Här kan man updatera respektive fält:
 
-        public void setShowPersons(Person person){
-            this.showPersons.setText(person.toString());
+        public void setShowPersons(String person){
+            this.showPersons.setText(person);
         }
         public void setShowInventory(String i){
             this.inventory.setText(i);
@@ -72,7 +72,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.panel.add(showPersons);
             this.panel.add(showRoom);
             this.panel.add(input);
-            this.panel.add(input2);
+            //this.panel.add(input2);
             this.panel.add(button);
             this.panel.add(inventory);
             this.panel.add(inventory2);
@@ -81,14 +81,15 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         private void setUpElements(){
             this.panel = new JPanel(new GridLayout(4,3));
             this.showRoom = new JTextArea("Rum ett: ");
-            this.showPersons = new JTextArea("Persons");
+            this.showPersons = new JTextArea();
             this.inventory = new JTextArea("");
             this.inventory2 = new JTextArea("");
             this.input = new JTextField("Give command");
-            this.input2 = new JTextField("Type item to drop or pickup");
+            //this.input2 = new JTextField("Type item to drop or pickup");
             this.showPersons.setEditable(false);
             this.showRoom.setEditable(false);
             this.inventory.setEditable(false);
+            this.inventory2.setEditable(false);
 
             ActionListener inputListener = e -> {
                 this.command = input.getText();
@@ -129,16 +130,6 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     default:
                         System.out.println("fel kommando!");
                 }
-                //gör till switch sats för dem olika kommandon och köra metoder..
-               /* if(Objects.equals("test", this.command)){
-               // this.gotCommand = true;
-                    Game.UTEST();
-                System.out.println("adderat");
-                } else System.out.println("skriv något");*/
-
-
-
-
             };
 
             input.addActionListener(inputListener);

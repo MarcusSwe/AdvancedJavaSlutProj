@@ -67,11 +67,11 @@ public class Game {
         rum2.updateRoomItems();
         rum3.updateRoomItems();
         rum4.updateRoomItems();
-
+        randomItemsToRooms();
 
 
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
-        pool.scheduleAtFixedRate(updateGUI ,6,6, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(updateGUI ,1,2, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(Jason ,1,8, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(Freddy ,1,8, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(TureSventon ,1,8, TimeUnit.SECONDS);

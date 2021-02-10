@@ -206,7 +206,7 @@ public class Person<showItems> extends Npc implements Runnable {
         for(int i = 0; i < showItems.length; i++){
             npcItems = npcItems +" " + showItems[i].getItemName();
         }
-        return this.xname +": " + npcItems +"\n";
+        return npcItems;
     }
 
 }
