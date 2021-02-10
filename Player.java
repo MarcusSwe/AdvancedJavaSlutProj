@@ -188,5 +188,39 @@ public class Player {
         return this.xname +": " + npcItems +"\n";
     }
 
+    public void dropNPCItem(GameObject d){
+        Stream<GameObject> myStreamX23 = Stream.of(this.playerItems.xObjects);
+        this.playerItems.xObjects = myStreamX23
+                .map(x -> {if(x.getItemName() == d.getItemName()){
+                    return Game.emptyCell;
+                } else return x;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+
+        switch(this.currentrum){
+            case 1:
+                System.out.println("111111111111");
+                Game.rum1.addRoomItem(d);
+                break;
+            case 2:
+                System.out.println("2222222222222");
+                Game.rum2.addRoomItem(d);
+                break;
+            case 3:
+                System.out.println("3333333333333");
+                Game.rum3.addRoomItem(d);
+                break;
+            case 4:
+                System.out.println("444444444444");
+                Game.rum4.addRoomItem(d);
+                break;
+        }
+        this.showItems();
+    }
+
+    public void playerDrop(){
+        this.dropNPCItem(this.showItems[0]);
+    }
+
 }
 
