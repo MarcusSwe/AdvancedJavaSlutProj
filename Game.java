@@ -35,11 +35,30 @@ public class Game {
 
         Container doorToFinish = new Container("Door", true, true);
         Key keyToDoor = new Key("KeyToUnlock", false, false);
-        GameObject CP = new GameObject("SAAAAAB", false, false);
+        GameObject item1 = new GameObject("Paraply", false, false);
+        GameObject item2 = new GameObject("Donut", false, false);
+        GameObject item3 = new GameObject("Motorsåg", false, false);
+        GameObject item4 = new GameObject("Penna", false, false);
+        GameObject item5 = new GameObject("Andriod phone", false, false);
+        GameObject item6 = new GameObject("Tröjja", false, false);
+        GameObject item7 = new GameObject("Colaburk", false, false);
+
+
 
         xTest.xObjects[0] = keyToDoor;
         xTest.xObjects[1] = doorToFinish;
-        xTest.xObjects[2] = CP;
+        xTest.xObjects[2] = item1;
+        xTest.xObjects[3] = item2;
+        xTest.xObjects[4] = item3;
+        xTest.xObjects[5] = item4;
+        xTest.xObjects[6] = item5;
+        xTest.xObjects[7] = item6;
+        xTest.xObjects[8] = item7;
+
+
+
+
+
 
 
         //* dela ut items till rummet här innan updateroomsItems...
@@ -63,6 +82,14 @@ public class Game {
 
     public static void randomItemsToRooms(){
         rum1.addRoomItem(xTest.xObjects[0]);
+        rum2.addRoomItem(xTest.xObjects[1]);
+        rum4.addRoomItem(xTest.xObjects[2]);
+        rum3.addRoomItem(xTest.xObjects[3]);
+        rum3.addRoomItem(xTest.xObjects[4]);
+        rum1.addRoomItem(xTest.xObjects[5]);
+        rum2.addRoomItem(xTest.xObjects[6]);
+        rum4.addRoomItem(xTest.xObjects[7]);
+        rum4.addRoomItem(xTest.xObjects[8]);
     }
 
     public static void randomItemsToRooms2(){
