@@ -21,7 +21,7 @@ public class Person<showItems> extends Npc implements Runnable {
 
     @Override
     public void run(){
-        int pickUpItemOrNot = (int)((Math.random() *4)+1);
+        int pickUpItemOrNot = (int)((Math.random() *3)+1);
         this.leaveRoom();
         this.goToRoom();
 
@@ -34,7 +34,7 @@ public class Person<showItems> extends Npc implements Runnable {
         }*/
 
         this.showItems();
-        if(this.showItems.length > 0){
+        if(this.showItems.length > 0 && pickUpItemOrNot == 1){
             if(this.showItems.length == 1) {
                 dropNPCItem(this.showItems[0]);
             } else {
@@ -50,7 +50,7 @@ public class Person<showItems> extends Npc implements Runnable {
 
 
 
-      if(pickUpItemOrNot == 1 && this.showItems.length < 2) {
+      if(pickUpItemOrNot == 2 && this.showItems.length < 2) {
             getRoomItem();
         }
 
