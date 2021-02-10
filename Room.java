@@ -9,6 +9,9 @@ public class Room<q> {
     private String roomname;
     Inventory roomItems;
     Inventory iTest;
+    GameObject[] showItems;
+    int passaItem = 0;
+    String rumNamn = "";
 
     public Room(String x, Inventory m){
         this.roomname = x;
@@ -59,12 +62,12 @@ public class Room<q> {
         String[] currentRoomMembers = myStream3
                 .distinct()
                 .collect(Collectors.toList()).toArray(new String[0]);
-        String rumNamn = "";
+        rumNamn = "";
         for(int i = 0; i < currentRoomMembers.length; i++){
             rumNamn = rumNamn +"\n" + currentRoomMembers[i];
         }
 
-        return roomname +": "+ rumNamn;
+        return this.roomname +": "+ this.rumNamn;
     }
 
 
@@ -90,7 +93,7 @@ public class Room<q> {
                 } else return x;
                 })
                 .collect(Collectors.toList()).toArray(new GameObject[20]);
-
+         passaItem++;
     }
 
     public synchronized void removeRoomItem(GameObject d){
@@ -105,7 +108,7 @@ public class Room<q> {
 
     public synchronized String showRoomItem(){
         Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
-        GameObject[] showItems = myStreamR
+        this.showItems = myStreamR
                 .distinct()
                 .filter(x -> {if(x == Game.emptyCell){
                     return false;
@@ -121,7 +124,7 @@ public class Room<q> {
 
     public synchronized GameObject getItemNPC(){
         Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
-        GameObject[] showItems = myStreamR
+        this.showItems = myStreamR
                 .distinct()
                 .filter(x -> {if(x == Game.emptyCell){
                     return false;
@@ -137,5 +140,24 @@ public class Room<q> {
         Arrays.fill(this.roomItems.xObjects, Game.emptyCell);
     }
 
+    public synchronized boolean passaItem(){
+        this.updateRoomItems();
+        this.passaItem = this.showItems.length;
+        if (this.passaItem >0) {
+            this.passaItem--;
+            return true;
+        } else return false;
+    }
+
+    public synchronized void updateRoomItems(){
+        Stream<GameObject> myStreamRTY = Stream.of(this.roomItems.xObjects);
+        this.showItems = myStreamRTY
+                .distinct()
+                .filter(x -> {if(x == Game.emptyCell){
+                    return false;
+                } else return true;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+    }
 
 }

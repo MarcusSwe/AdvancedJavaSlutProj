@@ -39,6 +39,12 @@ public class Game {
         xTest.xObjects[1] = doorToFinish;
 
 
+        //* dela ut items till rummet här innan updateroomsItems...
+
+        rum1.updateRoomItems();
+        rum2.updateRoomItems();
+        rum3.updateRoomItems();
+        rum4.updateRoomItems();
 
 
 
@@ -54,9 +60,6 @@ public class Game {
 
     public static void randomItemsToRooms(){
         rum1.addRoomItem(xTest.xObjects[0]);
-        rum2.addRoomItem(xTest.xObjects[1]);
-        rum3.addRoomItem(xTest.xObjects[0]);
-        rum4.addRoomItem(xTest.xObjects[0]);
 
     }
 
