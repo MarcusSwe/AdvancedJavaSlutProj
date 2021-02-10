@@ -93,7 +93,7 @@ public class Game {
     }
 
     public static void randomItemsToRooms2(){
-        rum1.addRoomItem(xTest.xObjects[1]);
+        jAg.getRoomItem();
     }
 
     public static void randomItemsToRooms3(){

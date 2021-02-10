@@ -2,6 +2,8 @@ import java.util.Arrays;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Player {
 
@@ -12,6 +14,7 @@ public class Player {
     String xname;
     int currentrum;
     Inventory playerItems;
+    GameObject[] showItems = new GameObject[5];
 
 
     public Player(Inventory g, int x, String o, int r) {
@@ -108,6 +111,81 @@ public class Player {
 
     public void defaultFillInventory(){
         Arrays.fill(this.playerItems.xObjects, Game.emptyCell);
+    }
+
+
+    public void getRoomItem(){
+        switch(this.currentrum){
+            case 1:
+                if(Game.rum1.passaItem()) {
+                    System.out.println("ITEEEEEEEEEEEEEEM ÄR HÄR");
+                    this.addRoomItem(Game.rum1.getItemNPC());
+                    //this.addRoomItem(Game.xTest.xObjects[0]);
+                }
+                break;
+            case 2:
+                if(Game.rum2.passaItem()) {
+                    this.addRoomItem(Game.rum2.getItemNPC());
+                }
+                break;
+            case 3:
+                if(Game.rum3.passaItem()) {
+                    this.addRoomItem(Game.rum3.getItemNPC());
+                }
+                break;
+            case 4:
+                if(Game.rum4.passaItem()) {
+                    this.addRoomItem(Game.rum4.getItemNPC());
+                }
+                break;
+        }
+    }
+
+    public void addRoomItem(GameObject t){
+        Stream<GameObject> myStreamX4444 = Stream.of(this.playerItems.xObjects);
+        this.playerItems.xObjects = myStreamX4444
+                .map(x -> {if(x.getItemName() == Game.emptyCell.getItemName()){
+                    return t;
+                } else return x;
+                })
+                .distinct()
+                .collect(Collectors.toList()).toArray(new GameObject[2]);
+
+        Stream<GameObject> myStreamX3333 = Stream.of(this.playerItems.xObjects);
+        this.playerItems.xObjects = myStreamX3333
+                .map(x -> {if(x == null){
+                    return Game.emptyCell;
+                } else return x;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[2]);
+        this.showItems();
+    }
+
+    public synchronized void showItems(){
+        Stream<GameObject> myStreamRX = Stream.of(this.playerItems.xObjects);
+        this.showItems = myStreamRX
+                .distinct()
+                .filter(x -> {if(x == Game.emptyCell){
+                    return false;
+                } else return true;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+    }
+
+    public String printNPCItems(){
+        Stream<GameObject> myStreamRXU = Stream.of(this.playerItems.xObjects);
+        this.showItems = myStreamRXU
+                .distinct()
+                .filter(x -> {if(x == Game.emptyCell){
+                    return false;
+                } else return true;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+        String npcItems = "";
+        for(int i = 0; i < showItems.length; i++){
+            npcItems = npcItems +" " + showItems[i].getItemName();
+        }
+        return this.xname +": " + npcItems +"\n";
     }
 
 }

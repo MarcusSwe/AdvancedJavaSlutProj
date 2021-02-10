@@ -108,7 +108,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "ADDITEMS":
                         Game.randomItemsToRooms();
                         break;
-                    case "ADDITEMS2":
+                    case "PLAYERPICKUP":
                         Game.randomItemsToRooms2();
                         break;
                     case "ADDITEMS3":

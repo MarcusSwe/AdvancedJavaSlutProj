@@ -41,7 +41,7 @@ public class Update implements Runnable{
 
 
         String showNpcItems = Game.Freddy.printNPCItems() + Game.TureSventon.printNPCItems() +
-                              Game.Jason.printNPCItems();
+                              Game.Jason.printNPCItems() + Game.jAg.printNPCItems();
 
         Game.gui.setShowInventory(showRooms + showNpcItems);
 
