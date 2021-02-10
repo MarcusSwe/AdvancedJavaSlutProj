@@ -21,28 +21,36 @@ public class Person<showItems> extends Npc implements Runnable {
 
     @Override
     public void run(){
-        boolean pickUpItemOrNot = (Math.random() < 0.5);
+        int pickUpItemOrNot = (int)((Math.random() *4)+1);
+        this.leaveRoom();
+        this.goToRoom();
 
 
-
-      /* if(pickUpItemOrNot && this.showItems.length > 0) {
+         /* if(pickUpItemOrNot && this.showItems.length > 0) {
             //dropNPCItem(this.showItems[(int) ((Math.random()*2))]);
             //dropNPCItem(this.showItems[0]);
             //this.dropNPCItem(Game.xTest.xObjects[0]);
            System.out.println("CPPPPPPPPPPPPPPPP");
         }*/
-        this.leaveRoom();
-        this.goToRoom();
 
-
-        //this.dropNPCItem(Game.xTest.xObjects[1]);
+        this.showItems();
+        if(this.showItems.length > 0){
+            if(this.showItems.length == 1) {
+                dropNPCItem(this.showItems[0]);
+            } else {
+                dropNPCItem(this.showItems[(int) ((Math.random()*2))]);
+            }
+        }
+      //  this.dropNPCItem(Game.xTest.xObjects[1]);
 
 
       // getRoomItem();
 
         //this.showItems();
 
-      if(this.showItems.length < 2) {
+
+
+      if(pickUpItemOrNot == 1 && this.showItems.length < 2) {
             getRoomItem();
         }
 
@@ -145,13 +153,13 @@ public class Person<showItems> extends Npc implements Runnable {
     }
 
     public void dropNPCItem(GameObject d){
-       /* Stream<GameObject> myStreamX23 = Stream.of(this.npcItems.xObjects);
+        Stream<GameObject> myStreamX23 = Stream.of(this.npcItems.xObjects);
         this.npcItems.xObjects = myStreamX23
                 .map(x -> {if(x.getItemName() == d.getItemName()){
                     return Game.emptyCell;
                 } else return x;
                 })
-                .collect(Collectors.toList()).toArray(new GameObject[0]);*/
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
 
         switch(this.currentrum){
             case 1:
