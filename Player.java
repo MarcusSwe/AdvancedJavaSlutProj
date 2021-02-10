@@ -121,22 +121,22 @@ public class Player {
                     System.out.println("ITEEEEEEEEEEEEEEM ÄR HÄR");
                     this.addRoomItem(Game.rum1.getItemNPC());
                     //this.addRoomItem(Game.xTest.xObjects[0]);
-                }
+                } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
                 break;
             case 2:
                 if(Game.rum2.passaItem()) {
                     this.addRoomItem(Game.rum2.getItemNPC());
-                }
+                } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
                 break;
             case 3:
                 if(Game.rum3.passaItem()) {
                     this.addRoomItem(Game.rum3.getItemNPC());
-                }
+                } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
                 break;
             case 4:
                 if(Game.rum4.passaItem()) {
                     this.addRoomItem(Game.rum4.getItemNPC());
-                }
+                } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
                 break;
         }
     }
@@ -219,7 +219,9 @@ public class Player {
     }
 
     public void playerDrop(){
-        this.dropNPCItem(this.showItems[0]);
+        if(this.showItems.length > 0) {
+            this.dropNPCItem(this.showItems[0]);
+        } else System.out.println("NO ITEMS TO DROP RETAAAAAAAAAAAAARD");
     }
 
 }
