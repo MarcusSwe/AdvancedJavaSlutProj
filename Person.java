@@ -137,7 +137,7 @@ public class Person<showItems> extends Npc implements Runnable {
         }
     }
 
-    public void dropNPCItem(GameObject d){
+    public synchronized void dropNPCItem(GameObject d){
         Stream<GameObject> myStreamX23 = Stream.of(this.npcItems.xObjects);
         this.npcItems.xObjects = myStreamX23
                 .map(x -> {if(x.getItemName() == d.getItemName()){
@@ -193,5 +193,40 @@ public class Person<showItems> extends Npc implements Runnable {
         }
         return npcItems;
     }
+
+    public synchronized GameObject dropNPCItemS(String P){
+        Stream<GameObject> myStreamR = Stream.of(this.npcItems.xObjects);
+        GameObject[] specific = myStreamR
+                .distinct()
+                .filter(x -> {if(x.getItemName() == P){
+                    return true;
+                } else return false;
+                })
+                .filter(x -> {if(x == Game.emptyCell){
+                    return false;
+                } else return true;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+        if (specific.length > 0) {
+            GameObject npcPickup = specific[0];
+            this.dropNPCItemToPlayer(npcPickup);
+            return npcPickup;
+        } else {
+            Game.gui.setShowPersons2("Item finns ej här!");
+            return Game.emptyCell;}
+    }
+
+    public synchronized void dropNPCItemToPlayer(GameObject d){
+        Stream<GameObject> myStreamX23 = Stream.of(this.npcItems.xObjects);
+        this.npcItems.xObjects = myStreamX23
+                .map(x -> {if(x.getItemName() == d.getItemName()){
+                    return Game.emptyCell;
+                } else return x;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+
+        this.showItems();
+    }
+
 
 }

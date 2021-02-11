@@ -65,7 +65,7 @@ public class Player {
 
     }
 
-    public void goToRoom(){
+    public synchronized void goToRoom(){
         int z = (int) ((Math.random()*4)+1);
 
         this.currentrum = z;
@@ -88,7 +88,7 @@ public class Player {
         System.out.println(this.xname + " says hi from room "+ z);
     }
 
-    public void leaveRoom(){
+    public synchronized void leaveRoom(){
         switch(this.currentrum){
             case 1:
                 Game.rum1.leaveRoom(this.xname);
@@ -144,7 +144,7 @@ public class Player {
         } else Game.gui.setShowPersons2("Kan ej ta upp fler items, max 5!");
     }
 
-    public void addRoomItem(GameObject t){
+    public synchronized void addRoomItem(GameObject t){
         Stream<GameObject> myStreamX4444 = Stream.of(this.playerItems.xObjects);
         this.playerItems.xObjects = myStreamX4444
                 .map(x -> {if(x.getItemName() == Game.emptyCell.getItemName()){
@@ -175,7 +175,7 @@ public class Player {
                 .collect(Collectors.toList()).toArray(new GameObject[0]);
     }
 
-    public String printNPCItems(){
+    public synchronized String printNPCItems(){
         Stream<GameObject> myStreamRXU = Stream.of(this.playerItems.xObjects);
         this.showItems = myStreamRXU
                 .distinct()
@@ -191,7 +191,7 @@ public class Player {
         return npcItems;
     }
 
-    public void dropNPCItem(GameObject d){
+    public synchronized void dropNPCItem(GameObject d){
         Stream<GameObject> myStreamX23 = Stream.of(this.playerItems.xObjects);
         this.playerItems.xObjects = myStreamX23
                 .map(x -> {if(x.getItemName() == d.getItemName()){
@@ -221,13 +221,13 @@ public class Player {
         this.showItems();
     }
 
-    public void playerDrop(){
+    public synchronized void playerDrop(){
         if(this.showItems.length > 0) {
             this.dropNPCItem(this.showItems[0]);
         } else System.out.println("NO ITEMS TO DROP RETAAAAAAAAAAAAARD");
     }
 
-    public void playerDropS(String G){
+    public synchronized void playerDropS(String G){
         if(this.showItems.length > 0) {
 
             Stream<GameObject> myStreamR = Stream.of(this.playerItems.xObjects);
@@ -279,27 +279,51 @@ public class Player {
         } else Game.gui.setShowPersons2("Kan ej ta upp fler items, max 5!");
     }
 
-    public void getNpcitem(String L){
+    public synchronized void getNpcitem(String L){
         switch(this.currentrum){
             case 1:
-                if(Game.Freddy.currentrum == 1){}
-                if(Game.TureSventon.currentrum == 1){}
-                if(Game.Jason.currentrum == 1){}
+                if(Game.Freddy.currentrum == 1){
+                    this.addRoomItem(Game.Freddy.dropNPCItemS(L));
+                }
+                if(Game.TureSventon.currentrum == 1){
+                    this.addRoomItem(Game.TureSventon.dropNPCItemS(L));
+                }
+                if(Game.Jason.currentrum == 1){
+                    this.addRoomItem(Game.Jason.dropNPCItemS(L));
+                }
                 break;
             case 2:
-                if(Game.Freddy.currentrum == 2){}
-                if(Game.TureSventon.currentrum == 2){}
-                if(Game.Jason.currentrum == 2){}
+                if(Game.Freddy.currentrum == 2){
+                    this.addRoomItem(Game.Freddy.dropNPCItemS(L));
+                }
+                if(Game.TureSventon.currentrum == 2){
+                    this.addRoomItem(Game.TureSventon.dropNPCItemS(L));
+                }
+                if(Game.Jason.currentrum == 2){
+                    this.addRoomItem(Game.Jason.dropNPCItemS(L));
+                }
                 break;
             case 3:
-                if(Game.Freddy.currentrum == 3){}
-                if(Game.TureSventon.currentrum == 3){}
-                if(Game.Jason.currentrum == 3){}
+                if(Game.Freddy.currentrum == 3){
+                    this.addRoomItem(Game.Freddy.dropNPCItemS(L));
+                }
+                if(Game.TureSventon.currentrum == 3){
+                    this.addRoomItem(Game.TureSventon.dropNPCItemS(L));
+                }
+                if(Game.Jason.currentrum == 3){
+                    this.addRoomItem(Game.Jason.dropNPCItemS(L));
+                }
                 break;
             case 4:
-                if(Game.Freddy.currentrum == 4){}
-                if(Game.TureSventon.currentrum == 4){}
-                if(Game.Jason.currentrum == 4){}
+                if(Game.Freddy.currentrum == 4){
+                    this.addRoomItem(Game.Freddy.dropNPCItemS(L));
+                }
+                if(Game.TureSventon.currentrum == 4){
+                    this.addRoomItem(Game.TureSventon.dropNPCItemS(L));
+                }
+                if(Game.Jason.currentrum == 4){
+                    this.addRoomItem(Game.Jason.dropNPCItemS(L));
+                }
                 break;
         }
     }

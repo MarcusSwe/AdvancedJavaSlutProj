@@ -23,11 +23,12 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         private JButton button;
         private JButton start;
         private JButton load;
+        private JButton save;
         public Gui(){
             this.gotCommand = false;
             this.command = "";
             this.setTitle("Game");
-            this.setSize(1000, 600);
+            this.setSize(1200, 600);
             this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             setUpElements();
             setUpPanel();
@@ -84,6 +85,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.panel.add(status);
             this.panel.add(start);
             this.panel.add(load);
+            this.panel.add(save);
             this.panel.add(inventory);
         }
         private void setUpElements(){
@@ -231,6 +233,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.start = new JButton("Start");
             //this.button.addActionListener(inputListener);
             this.load = new JButton("Load");
+            this.save = new JButton("Save");
             //this.button.addActionListener(inputListener);
 
         }
