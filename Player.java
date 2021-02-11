@@ -227,6 +227,28 @@ public class Player {
         } else System.out.println("NO ITEMS TO DROP RETAAAAAAAAAAAAARD");
     }
 
+    public void playerDropS(String G){
+        if(this.showItems.length > 0) {
+
+            Stream<GameObject> myStreamR = Stream.of(this.playerItems.xObjects);
+            GameObject[] specificP = myStreamR
+                    .distinct()
+                    .filter(x -> {if(x.getItemName() == G){
+                        return true;
+                    } else return false;
+                    })
+                    .filter(x -> {if(x == Game.emptyCell){
+                        return false;
+                    } else return true;
+                    })
+                    .collect(Collectors.toList()).toArray(new GameObject[0]);
+            if (specificP.length > 0) {
+                GameObject npcPickup = specificP[0];
+                this.dropNPCItem(npcPickup);
+            } else Game.gui.setShowPersons2("Kan ej droppa item för du har det ej på dig!");
+        }
+    }
+
     public synchronized void getRoomItemS(String Y){
         this.showItems();
         if(this.showItems.length < 5) {

@@ -144,56 +144,56 @@ public class Game {
         jAg.getRoomItemS("Door");
     }
     public static void pKeyToUnlock(){
-
+        jAg.getRoomItemS("KeyToUnlock");
     }
     public static void pParaply(){
-
+        jAg.getRoomItemS("Paraply");
     }
     public static void pDonut(){
-
+        jAg.getRoomItemS("Donut");
     }
     public static void pMotorsag(){
-
+        jAg.getRoomItemS("Motorsåg");
     }
     public static void pPenna(){
-
+        jAg.getRoomItemS("Penna");
     }
     public static void pAndriod(){
-
+        jAg.getRoomItemS("Andriod phone");
     }
     public static void pTrojja(){
-
+        jAg.getRoomItemS("Tröjja");
     }
     public static void pColaburk(){
-
+        jAg.getRoomItemS("Colaburk");
     }
 
     public static void dDoor(){
-
+        jAg.playerDropS("Door");
     }
     public static void dKeyToUnlock(){
-
+        jAg.playerDropS("KeyToUnlock");
     }
     public static void dParaply(){
-
+        jAg.playerDropS("Paraply");
     }
     public static void dDonut(){
-
+        jAg.playerDropS("Donut");
     }
     public static void dMotorsag(){
-
+        jAg.playerDropS("Motorsåg");
     }
     public static void dPenna(){
-
+        jAg.playerDropS("Penna");
     }
     public static void dAndriod(){
-
+        jAg.playerDropS("Andriod phone");
     }
     public static void dTrojja(){
-
+        jAg.playerDropS("Tröjja");
     }
     public static void dColaburk(){
-
+        jAg.playerDropS("Colaburk");
     }
 
 
