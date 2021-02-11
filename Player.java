@@ -279,6 +279,30 @@ public class Player {
         } else Game.gui.setShowPersons2("Kan ej ta upp fler items, max 5!");
     }
 
+    public void getNpcitem(String L){
+        switch(this.currentrum){
+            case 1:
+                if(Game.Freddy.currentrum == 1){}
+                if(Game.TureSventon.currentrum == 1){}
+                if(Game.Jason.currentrum == 1){}
+                break;
+            case 2:
+                if(Game.Freddy.currentrum == 2){}
+                if(Game.TureSventon.currentrum == 2){}
+                if(Game.Jason.currentrum == 2){}
+                break;
+            case 3:
+                if(Game.Freddy.currentrum == 3){}
+                if(Game.TureSventon.currentrum == 3){}
+                if(Game.Jason.currentrum == 3){}
+                break;
+            case 4:
+                if(Game.Freddy.currentrum == 4){}
+                if(Game.TureSventon.currentrum == 4){}
+                if(Game.Jason.currentrum == 4){}
+                break;
+        }
+    }
 
 }
 

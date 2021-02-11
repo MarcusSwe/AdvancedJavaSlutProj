@@ -26,13 +26,6 @@ public class Person<showItems> extends Npc implements Runnable {
         this.goToRoom();
 
 
-         /* if(pickUpItemOrNot && this.showItems.length > 0) {
-            //dropNPCItem(this.showItems[(int) ((Math.random()*2))]);
-            //dropNPCItem(this.showItems[0]);
-            //this.dropNPCItem(Game.xTest.xObjects[0]);
-           System.out.println("CPPPPPPPPPPPPPPPP");
-        }*/
-
         this.showItems();
         if(this.showItems.length > 0 && pickUpItemOrNot == 1){
             if(this.showItems.length == 1) {
@@ -41,14 +34,6 @@ public class Person<showItems> extends Npc implements Runnable {
                 dropNPCItem(this.showItems[(int) ((Math.random()*2))]);
             }
         }
-      //  this.dropNPCItem(Game.xTest.xObjects[1]);
-
-
-      // getRoomItem();
-
-        //this.showItems();
-
-
 
       if(pickUpItemOrNot == 2 && this.showItems.length < 2) {
             getRoomItem();

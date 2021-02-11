@@ -71,7 +71,7 @@ public class Game {
 
 
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
-        pool.scheduleAtFixedRate(updateGUI ,1,2, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(updateGUI ,1,1200, TimeUnit.MILLISECONDS);
         pool.scheduleAtFixedRate(Jason ,1,8, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(Freddy ,1,8, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(TureSventon ,1,8, TimeUnit.SECONDS);
@@ -196,6 +196,33 @@ public class Game {
         jAg.playerDropS("Colaburk");
     }
 
+    public static void npcPDoor(){
+        jAg.getNpcitem("Door");
+    }
+    public static void npcPKeyToUnlock(){
+        jAg.getNpcitem("KeyToUnlock");
+    }
+    public static void npcPParaply(){
+        jAg.getNpcitem("Paraply");
+    }
+    public static void npcPDonut(){
+        jAg.getNpcitem("Donut");
+    }
+    public static void npcPMotorsag(){
+        jAg.getNpcitem("Motorsåg");
+    }
+    public static void npcPPenna(){
+        jAg.getNpcitem("Penna");
+    }
+    public static void npcPAndriod(){
+        jAg.getNpcitem("Andriod phone");
+    }
+    public static void npcPTrojja(){
+        jAg.getNpcitem("Tröjja");
+    }
+    public static void npcPColaburk(){
+        jAg.getNpcitem("Colaburk");
+    }
 
   /* flytta över denna till person klassen.. Man kanske har runnable här utan använder sig av getters och setters där man skickar info och flyttar dem till olika rum eftersom han inte har runnable..
     class xNPC extends Npc implements Runnable {

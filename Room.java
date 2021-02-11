@@ -195,4 +195,8 @@ public class Room<q> {
                 .collect(Collectors.toList()).toArray(new GameObject[0]);
     }
 
+    public void pickNpcItem(){
+
+    }
+
 }

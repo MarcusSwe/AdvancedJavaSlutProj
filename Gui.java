@@ -92,7 +92,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.showPersons = new JTextArea();
             this.inventory = new JTextArea("");
             this.inventory2 = new JTextArea("");
-            this.status = new JTextArea("Status: Find key and find door to win! Pickup item with 'P itemname' \n or drop with 'D itemname'");
+            this.status = new JTextArea("Status: Find key and find door to win! Pickup item with 'P itemname' \n or drop with 'D itemname' \n or 'NPC P itemname' do pickup NPC item");
             this.input = new JTextField("Give command");
             //this.input2 = new JTextField("Type item to drop or pickup");
             this.showPersons.setEditable(false);
@@ -102,7 +102,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.status.setEditable(false);
 
             ActionListener inputListener = e -> {
-                this.setShowPersons2("Status: Find key and find door to win! Pickup item with 'P itemname' \n or drop with 'D itemname'");
+                this.setShowPersons2("Status: Find key and find door to win! Pickup item with 'P itemname' \n or drop with 'D itemname' \n or 'NPC P itemname' do pickup NPC item");
                 this.command = input.getText();
                 switch (this.command){
                     case "test":
@@ -191,6 +191,33 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                         break;
                     case "D Colaburk":
                         Game.dColaburk();
+                        break;
+                    case "NPC P Door":
+                        Game.npcPDoor();
+                        break;
+                    case "NPC P KeyToUnlock":
+                        Game.npcPKeyToUnlock();
+                        break;
+                    case "NPC P Paraply":
+                        Game.npcPParaply();
+                        break;
+                    case "NPC P Donut":
+                        Game.npcPDonut();
+                        break;
+                    case "NPC P Motorsåg":
+                        Game.npcPMotorsag();
+                        break;
+                    case "NPC P Penna":
+                        Game.npcPPenna();
+                        break;
+                    case "NPC P Andriod phone":
+                        Game.npcPAndriod();
+                        break;
+                    case "NPC P Tröjja":
+                        Game.npcPTrojja();
+                        break;
+                    case "NPC P Colaburk":
+                        Game.npcPColaburk();
                         break;
                     default:
                         this.setShowPersons2("Fel Kommando!");

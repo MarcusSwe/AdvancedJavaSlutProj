@@ -10,7 +10,7 @@ public class Update implements Runnable{
 
     @Override
 
-    public void run(){
+    public synchronized void run(){
        // System.out.println(this.boom.getInt());
        // System.out.println(Arrays.toString(this.boom.getRoom()));
         //System.out.println(Arrays.toString(this.boom.getStream()));
