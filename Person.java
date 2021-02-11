@@ -27,6 +27,7 @@ public class Person<showItems> extends Npc implements Runnable, Serializable {
         this.goToRoom();
 
 
+
         this.showItems();
         if(this.showItems.length > 0 && pickUpItemOrNot == 1){
             if(this.showItems.length == 1) {

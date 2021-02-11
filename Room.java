@@ -74,13 +74,13 @@ public class Room implements Serializable {
                 rumNamn = rumNamn + "\n" + currentRoomMembers[i]+"("+Game.jAg.printNPCItems()+")";
             }
             if(currentRoomMembers[i] == "Jason") {
-                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+"("+Game.Jason.printNPCItems()+")";
+                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+" says: Hi there! " +"("+Game.Jason.printNPCItems()+")";
             }
             if(currentRoomMembers[i] == "Ture Sventon") {
-                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+"("+Game.TureSventon.printNPCItems()+")";
+                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+" says: This is my loot! "+"("+Game.TureSventon.printNPCItems()+")";
             }
             if(currentRoomMembers[i] == "Freddy") {
-                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+"("+Game.Freddy.printNPCItems()+")";
+                rumNamn = rumNamn + "\n" + currentRoomMembers[i]+" says: Im looking for the key! "+"("+Game.Freddy.printNPCItems()+")";
             }
         }
 

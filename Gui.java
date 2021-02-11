@@ -230,6 +230,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             };
 
             ActionListener inputListener2 = j -> {
+                this.panel.remove(start);
                 Game.startGame();
             };
 

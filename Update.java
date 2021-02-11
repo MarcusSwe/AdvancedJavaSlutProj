@@ -41,7 +41,7 @@ public class Update implements Runnable{
 
 
         String showNpcItems = "Freddy: "+Game.Freddy.printNPCItems() +"\n"+ "Ture Sventon: "+Game.TureSventon.printNPCItems() +"\n" +
-                "Jason: "+Game.Jason.printNPCItems() +"\n" + "MEEEEE: "+Game.jAg.printNPCItems();
+                "Jason says: "+Game.Jason.printNPCItems() +"\n" + "MEEEEE: "+Game.jAg.printNPCItems();
 
         Game.gui.setShowInventory(showRooms + showNpcItems);
         Game.gui.setShowPersons("Mitt inventory: "+Game.jAg.printNPCItems());
