@@ -140,7 +140,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "REMOVEITEMS":
                         Game.removeItem();
                         break;
-                    case "P Door":
+                    case "P Tandborste":
                         Game.pDoor();
                         break;
                     case "P KeyToUnlock":
@@ -167,7 +167,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "P Colaburk":
                         Game.pColaburk();
                         break;
-                    case "D Door":
+                    case "D Tandborste":
                         Game.dDoor();
                         break;
                     case "D KeyToUnlock":
@@ -194,7 +194,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "D Colaburk":
                         Game.dColaburk();
                         break;
-                    case "NPC P Door":
+                    case "NPC P Tandborste":
                         Game.npcPDoor();
                         break;
                     case "NPC P KeyToUnlock":
@@ -221,23 +221,47 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
                     case "NPC P Colaburk":
                         Game.npcPColaburk();
                         break;
+                    case "EXIT":
+                        Game.exitDoor();
+                        break;
                     default:
                         this.setShowPersons2("Fel Kommando!");
                 }
+            };
+
+            ActionListener inputListener2 = j -> {
+                Game.startGame();
+            };
+
+            ActionListener loadFile = rt ->{
+                Game.loadFile();
+            };
+
+            ActionListener saveFile = ry ->{
+                Game.saveFile();
             };
 
             input.addActionListener(inputListener);
 
             this.button = new JButton("commit");
             this.button.addActionListener(inputListener);
+
             this.start = new JButton("Start");
-            //this.button.addActionListener(inputListener);
+            this.start.addActionListener(inputListener2);
+
             this.load = new JButton("Load");
+            this.load.addActionListener(loadFile);
+
             this.save = new JButton("Save");
+            this.save.addActionListener(saveFile);
+
             //this.button.addActionListener(inputListener);
+
+
+
+
 
         }
-
 
     }
 

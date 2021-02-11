@@ -1,16 +1,17 @@
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Room<q> {
+public class Room implements Serializable {
 
     private String[] roomtest = {"","","",""};
     private String roomname;
     Inventory roomItems;
     Inventory iTest;
     GameObject[] showItems;
-
+    String xDoor = "";
     int passaItem = 0;
     String rumNamn = "";
 
@@ -26,6 +27,10 @@ public class Room<q> {
         //this.roomItems.xObjects[0] = new GameObject("TEST",false,false);
     }
 
+
+    public void giveDoor(){
+        this.xDoor = "Dörr";
+    }
 
     public synchronized void setRoom(String y){
         Stream<String> myStream2 = Stream.of(this.roomtest);
@@ -132,7 +137,7 @@ public class Room<q> {
         for(int i = 0; i < showItems.length; i++){
             rumItems = rumItems +" " + showItems[i].getItemName();
         }
-        return roomname +": " + rumItems +"\n";
+        return roomname +": " + xDoor + rumItems +"\n";
     }
 
     public synchronized GameObject getItemNPC(){

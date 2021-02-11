@@ -1,3 +1,5 @@
-public abstract class Npc {
+import java.io.Serializable;
+
+public abstract class Npc implements Serializable {
 
 }

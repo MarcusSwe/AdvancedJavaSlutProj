@@ -1,8 +1,10 @@
+import javax.swing.*;
+import java.io.*;
 import java.util.Arrays;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class Game {
+public class Game implements Serializable{
 
     static Inventory xTest = new Inventory(100);
     static Player jAg = new Player(xTest, 1000000, "MEEEEE", 1);
@@ -15,9 +17,12 @@ public class Game {
     static Person TureSventon = new Person("Ture Sventon", 400, xTest,2);
     static GameObject emptyCell = new GameObject("emptycell", false, false);
     static Gui gui = new Gui();
+    static Update updateGUI = new Update(xTest);
+    static String filename = "loadFile";
 
     public Game(){
-        Update updateGUI = new Update(xTest);
+
+        //Update updateGUI = new Update(xTest);
 
         rum1.setRoom("MEEEEE");
 
@@ -33,7 +38,7 @@ public class Game {
 
         Arrays.fill(xTest.xObjects, Game.emptyCell);
 
-        Container doorToFinish = new Container("Door", true, true);
+        Container doorToFinish = new Container("Tandborste", true, true);
         Key keyToDoor = new Key("KeyToUnlock", false, false);
         GameObject item1 = new GameObject("Paraply", false, false);
         GameObject item2 = new GameObject("Donut", false, false);
@@ -59,8 +64,6 @@ public class Game {
 
 
 
-
-
         //* dela ut items till rummet här innan updateroomsItems...
 
         rum1.updateRoomItems();
@@ -69,15 +72,78 @@ public class Game {
         rum4.updateRoomItems();
         randomItemsToRooms();
 
-
+     /*
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
         pool.scheduleAtFixedRate(updateGUI ,1,1200, TimeUnit.MILLISECONDS);
         pool.scheduleAtFixedRate(Jason ,1,8, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(Freddy ,1,8, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(TureSventon ,1,8, TimeUnit.SECONDS);
+*/
+
+        int door = (int)((Math.random()*4)+1);
+        switch(door){
+            case 1:
+                Game.rum1.giveDoor();
+            break;
+            case 2:
+                Game.rum2.giveDoor();
+            break;
+            case 3:
+                Game.rum3.giveDoor();
+            break;
+            case 4:
+                Game.rum4.giveDoor();
+            break;
+        }
+
+    }
+
+    public static Player loadFile(){
+        JFileChooser LF = new JFileChooser("/myfilepath");
+        LF.showOpenDialog(null);
+        File file = LF.getSelectedFile();
+        filename = file.getName();
 
 
+        FileInputStream fis = null;
+        try{
+            fis = new FileInputStream(filename);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            jAg = (Player) ois.readObject();
+        } catch (IOException e) {
 
+        } catch (ClassNotFoundException e) {
+
+        }
+        return jAg;
+
+    }
+
+    public static void saveFile(){
+        JFileChooser SF = new JFileChooser("/myfilepath");
+        SF.showSaveDialog(null);
+        File file = SF.getSelectedFile();
+
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(jAg);
+            oos.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void startGame() {
+        ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
+        pool.scheduleAtFixedRate(updateGUI, 1, 1200, TimeUnit.MILLISECONDS);
+        pool.scheduleAtFixedRate(Jason, 1, 8, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(Freddy, 1, 8, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(TureSventon, 1, 8, TimeUnit.SECONDS);
     }
 
     public static void randomItemsToRooms(){
@@ -141,7 +207,7 @@ public class Game {
     }
 
     public static void pDoor(){
-        jAg.getRoomItemS("Door");
+        jAg.getRoomItemS("Tandborste");
     }
     public static void pKeyToUnlock(){
         jAg.getRoomItemS("KeyToUnlock");
@@ -169,7 +235,7 @@ public class Game {
     }
 
     public static void dDoor(){
-        jAg.playerDropS("Door");
+        jAg.playerDropS("Tandborste");
     }
     public static void dKeyToUnlock(){
         jAg.playerDropS("KeyToUnlock");
@@ -197,7 +263,7 @@ public class Game {
     }
 
     public static void npcPDoor(){
-        jAg.getNpcitem("Door");
+        jAg.getNpcitem("Tandborste");
     }
     public static void npcPKeyToUnlock(){
         jAg.getNpcitem("KeyToUnlock");
@@ -222,6 +288,10 @@ public class Game {
     }
     public static void npcPColaburk(){
         jAg.getNpcitem("Colaburk");
+    }
+
+    public static void exitDoor(){
+       jAg.checkForKey();
     }
 
   /* flytta över denna till person klassen.. Man kanske har runnable här utan använder sig av getters och setters där man skickar info och flyttar dem till olika rum eftersom han inte har runnable..

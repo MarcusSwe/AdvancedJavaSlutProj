@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -5,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Player {
+public class Player implements Serializable {
 
     Inventory alpha;
     int size;
@@ -325,6 +326,28 @@ public class Player {
                     this.addRoomItem(Game.Jason.dropNPCItemS(L));
                 }
                 break;
+        }
+    }
+
+    public synchronized void checkForKey() {
+        Stream<GameObject> myStreamR = Stream.of(this.playerItems.xObjects);
+        GameObject[] specific = myStreamR
+                .distinct()
+                .filter(x -> {
+                    if (x.getItemName() == "KeyToUnlock") {
+                        return true;
+                    } else return false;
+                })
+                .filter(x -> {
+                    if (x == Game.emptyCell) {
+                        return false;
+                    } else return true;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+        if (specific.length > 0) {
+            Game.gui.setShowPersons2("Du hitta ut! Grattis!");
+        } else {
+            Game.gui.setShowPersons2("Fel rum eller ingen nyckel!");
         }
     }
 

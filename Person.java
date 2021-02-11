@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Person<showItems> extends Npc implements Runnable {
+public class Person<showItems> extends Npc implements Runnable, Serializable {
     String xname;
     int size;
     Inventory iTest;
