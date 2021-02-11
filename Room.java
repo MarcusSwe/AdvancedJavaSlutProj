@@ -10,6 +10,7 @@ public class Room<q> {
     Inventory roomItems;
     Inventory iTest;
     GameObject[] showItems;
+
     int passaItem = 0;
     String rumNamn = "";
 
@@ -146,6 +147,28 @@ public class Room<q> {
         GameObject npcPickup = showItems[(int) (Math.random()* showItems.length)];
         this.removeRoomItem(npcPickup);
       return npcPickup;
+    }
+
+    public synchronized GameObject getItemS(String U){
+        Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
+        GameObject[] specific = myStreamR
+                .distinct()
+                .filter(x -> {if(x.getItemName() == U){
+                    return true;
+                } else return false;
+                })
+                .filter(x -> {if(x == Game.emptyCell){
+                    return false;
+                } else return true;
+                })
+                .collect(Collectors.toList()).toArray(new GameObject[0]);
+        if (specific.length > 0) {
+            GameObject npcPickup = specific[0];
+            this.removeRoomItem(npcPickup);
+            return npcPickup;
+        } else {
+            Game.gui.setShowPersons2("Item finns ej här!");
+            return Game.emptyCell;}
     }
 
     public void defaultFillInventory(){

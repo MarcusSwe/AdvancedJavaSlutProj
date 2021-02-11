@@ -141,7 +141,7 @@ public class Game {
     }
 
     public static void pDoor(){
-
+        jAg.getRoomItemS("Door");
     }
     public static void pKeyToUnlock(){
 

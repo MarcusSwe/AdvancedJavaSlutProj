@@ -227,5 +227,36 @@ public class Player {
         } else System.out.println("NO ITEMS TO DROP RETAAAAAAAAAAAAARD");
     }
 
+    public synchronized void getRoomItemS(String Y){
+        this.showItems();
+        if(this.showItems.length < 5) {
+            switch (this.currentrum) {
+                case 1:
+                    if (Game.rum1.passaItem()) {
+                        System.out.println("ITEEEEEEEEEEEEEEM ÄR HÄR");
+                        this.addRoomItem(Game.rum1.getItemS(Y));
+                        //this.addRoomItem(Game.xTest.xObjects[0]);
+                    } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
+                    break;
+                case 2:
+                    if (Game.rum2.passaItem()) {
+                        this.addRoomItem(Game.rum2.getItemS(Y));
+                    } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
+                    break;
+                case 3:
+                    if (Game.rum3.passaItem()) {
+                        this.addRoomItem(Game.rum3.getItemS(Y));
+                    } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
+                    break;
+                case 4:
+                    if (Game.rum4.passaItem()) {
+                        this.addRoomItem(Game.rum4.getItemS(Y));
+                    } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
+                    break;
+            }
+        } else Game.gui.setShowPersons2("Kan ej ta upp fler items, max 5!");
+    }
+
+
 }
 
