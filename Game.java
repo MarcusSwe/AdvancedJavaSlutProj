@@ -20,7 +20,11 @@ public class Game implements Serializable{
     static Gui gui = new Gui();
     static Update updateGUI = new Update(xTest);
     static String filename = "loadFile";
+<<<<<<< HEAD
     static ArrayList<Object> saveData = new ArrayList<>();
+=======
+   
+>>>>>>> 6041a95b0f5cb0f71dae50dfced4a7c243ec6d4f
 
     public Game(){
 
