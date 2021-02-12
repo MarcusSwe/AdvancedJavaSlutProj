@@ -13,14 +13,8 @@ public class Update implements Runnable, Serializable {
     @Override
 
     public synchronized void run(){
-       // System.out.println(this.boom.getInt());
-       // System.out.println(Arrays.toString(this.boom.getRoom()));
-        //System.out.println(Arrays.toString(this.boom.getStream()));
 
-/*        System.out.println(Game.rum1.getRoom());
-        System.out.println(Game.rum2.getRoom());
-        System.out.println(Game.rum3.getRoom());
-        System.out.println(Game.rum4.getRoom());*/
+        //rapporterar till GUI SAMT felsök till consol..
 
         Game.jAg.showItems();
 
@@ -58,10 +52,6 @@ public class Update implements Runnable, Serializable {
 
         Game.gui.setShowInventory(showRooms + showNpcItems);
         Game.gui.setShowPersons("Mitt inventory: "+Game.jAg.printNPCItems());
-
-
-
-
 
 
     }

@@ -9,8 +9,8 @@ public class Person extends Npc implements Runnable, Serializable {
     Inventory iTest;
     int currentrum = 1;
     Inventory npcItems;
-    GameObject[] showItems = new GameObject[2];
-
+    GameObject[] showItems = new GameObject[2]; /*Denna array används för printa ut itemsen..Så streamar över
+                                                  riktiga inven och filtrerar bort emptycells*/
 
     public Person(String xname, int y, Inventory o, int x){
         this.xname = xname;
@@ -23,12 +23,11 @@ public class Person extends Npc implements Runnable, Serializable {
     @Override
     public void run(){
         int pickUpItemOrNot = (int)((Math.random() *3)+1);
-        this.leaveRoom();
+        this.leaveRoom(); //guess what
         this.goToRoom();
-
-
-
         this.showItems();
+
+        // droppar itemsen på random och om man har något på sig
         if(this.showItems.length > 0 && pickUpItemOrNot == 1){
             if(this.showItems.length == 1) {
                 dropNPCItem(this.showItems[0]);
@@ -37,6 +36,7 @@ public class Person extends Npc implements Runnable, Serializable {
             }
         }
 
+      // tar upp itemsen random och NPC inte har fler än 2 på sig..
       if(pickUpItemOrNot == 2 && this.showItems.length < 2) {
             getRoomItem();
         }
@@ -61,8 +61,6 @@ public class Person extends Npc implements Runnable, Serializable {
                 Game.rum4.setRoom(this.xname);
                 break;
         }
-
-
        // System.out.println(this.xname + " says hi from room "+ z);
     }
 
@@ -84,7 +82,7 @@ public class Person extends Npc implements Runnable, Serializable {
     }
 
 
-
+    //Addar room itemsen till sin array..
     public void addRoomItem(GameObject t){
         Stream<GameObject> myStreamX4444 = Stream.of(this.npcItems.xObjects);
         this.npcItems.xObjects = myStreamX4444
@@ -106,12 +104,13 @@ public class Person extends Npc implements Runnable, Serializable {
     }
 
 
-
+    //Fyller arraysen med emptycells, start sak..
     public void defaultFillInventory(){
         Arrays.fill(this.npcItems.xObjects, Game.emptyCell);
         Arrays.fill(this.showItems, Game.emptyCell);
     }
 
+    //tar upp itemsen från rummet där man är i.. skickar vidare till additemsen metoden..
     public void getRoomItem(){
         switch(this.currentrum){
             case 1:
@@ -139,6 +138,7 @@ public class Person extends Npc implements Runnable, Serializable {
         }
     }
 
+    //droppar itemsen och replacar med emptycell..kontrollerar vilket rum man är i och droppar där..
     public synchronized void dropNPCItem(GameObject d){
         Stream<GameObject> myStreamX23 = Stream.of(this.npcItems.xObjects);
         this.npcItems.xObjects = myStreamX23
@@ -169,6 +169,7 @@ public class Person extends Npc implements Runnable, Serializable {
        this.showItems();
     }
 
+    //uppdaterar show arrayen.. tar vanliga inven arrayen och streamar bort emptycells..
     public synchronized void showItems(){
         Stream<GameObject> myStreamRX = Stream.of(this.npcItems.xObjects);
         this.showItems = myStreamRX
@@ -180,6 +181,7 @@ public class Person extends Npc implements Runnable, Serializable {
                 .collect(Collectors.toList()).toArray(new GameObject[0]);
     }
 
+    //printar ut NPC itemsen till GUI genom skicka vidare strängen som byggs upp..
     public String printNPCItems(){
         Stream<GameObject> myStreamRXU = Stream.of(this.npcItems.xObjects);
         this.showItems = myStreamRXU
@@ -196,6 +198,7 @@ public class Person extends Npc implements Runnable, Serializable {
         return npcItems;
     }
 
+    // denna metod används när spelaren snor itemsen från NPC..
     public synchronized GameObject dropNPCItemS(String P){
         Stream<GameObject> myStreamR = Stream.of(this.npcItems.xObjects);
         GameObject[] specific = myStreamR
@@ -218,6 +221,7 @@ public class Person extends Npc implements Runnable, Serializable {
             return Game.emptyCell;}
     }
 
+    //se ovan..
     public synchronized void dropNPCItemToPlayer(GameObject d){
         Stream<GameObject> myStreamX23 = Stream.of(this.npcItems.xObjects);
         this.npcItems.xObjects = myStreamX23

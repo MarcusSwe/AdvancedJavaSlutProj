@@ -16,8 +16,7 @@ public class Player implements Serializable {
     String xname;
     int currentrum;
     Inventory playerItems;
-    //GameObject[] showItems = new GameObject[5];
-    GameObject[] showItems;
+    GameObject[] showItems; // samma som NPC.. samma sak som inventory fast utan emptycells.. för att printa
     GameObject emptyCellX;
 
     public Player(Inventory g, int x, String o, int r) {
@@ -30,16 +29,12 @@ public class Player implements Serializable {
         }
 
 
-
+    //TEST metoder nedan.. typ starta en stream och sedan deaktiverar den från GUI..bara lite roligt test jag gjorde..
     public void run() {
-      // alpha.setInt(this.yu);
-       //alpha.setStream(2);
     }
 
     public void run2(){
         this.future = this.pool2.scheduleAtFixedRate(new segHej(), 1, 5, TimeUnit.SECONDS);
-
-
     }
 
     public void run3(){
@@ -50,17 +45,11 @@ public class Player implements Serializable {
         this.pool2.shutdown();
     }
 
-    /*public void run5(){
-        alpha.setRoom("COHH");
-    }*/
-
-
     public void startT1() {
         this.pool2 = new ScheduledThreadPoolExecutor(2);
         pool2.scheduleAtFixedRate(new segHej(), 1, 5, TimeUnit.SECONDS);
 
     }
-
     private class segHej implements Runnable{
         @Override
         public void run() {
@@ -69,6 +58,7 @@ public class Player implements Serializable {
 
     }
 
+    // Guess what..
     public synchronized void goToRoom(){
         int z = (int) ((Math.random()*4)+1);
 
@@ -109,16 +99,18 @@ public class Player implements Serializable {
         }
     }
 
+    //Ger rum där spelaren är i ..
     public int giveRoom(){
         return this.currentrum;
     }
 
+    //Fyller arrayer med emptycells..
     public void defaultFillInventory(){
 
         Arrays.fill(this.playerItems.xObjects, this.emptyCellX);
     }
 
-
+    //Tar upp itemsen..kollar först med Passa metoden i rum..
     public synchronized void getRoomItem(){
         this.showItems();
         if(this.showItems.length < 5) {
@@ -127,7 +119,6 @@ public class Player implements Serializable {
                     if (Game.rum1.passaItem()) {
                         System.out.println("ITEEEEEEEEEEEEEEM ÄR HÄR");
                         this.addRoomItem(Game.rum1.getItemNPC());
-                        //this.addRoomItem(Game.xTest.xObjects[0]);
                     } else System.out.println("NO ITEMS TO PICKUP REEEEEEEETAAAAAAAAARD");
                     break;
                 case 2:
@@ -149,6 +140,8 @@ public class Player implements Serializable {
         } else Game.gui.setShowPersons2("Kan ej ta upp fler items, max 5!");
     }
 
+    //metoden getroom tillkallar efter fått klartecken från Passa från room klassen..
+    //addar till emptycells, bygger arrayen vidare genom replaya null med emptycells..
     public synchronized void addRoomItem(GameObject t){
         Stream<GameObject> myStreamX4444 = Stream.of(this.playerItems.xObjects);
         this.playerItems.xObjects = myStreamX4444
@@ -169,6 +162,7 @@ public class Player implements Serializable {
         this.showItems();
     }
 
+    //visar arrayen.. samma som inv men utan emptycells.. för clean print..
     public synchronized void showItems(){
         Stream<GameObject> myStreamRX = Stream.of(this.playerItems.xObjects);
         this.showItems = myStreamRX
@@ -197,11 +191,10 @@ public class Player implements Serializable {
         for(int i = 0; i < showItems.length; i++){
             npcItems = npcItems +" " + showItems[i].getItemName();
         }
-
         return npcItems;
-
     }
 
+    //droppar itemsen och kollar först vilket rum man befinner sig i ..
     public synchronized void dropNPCItem(GameObject d){
         Stream<GameObject> myStreamX23 = Stream.of(this.playerItems.xObjects);
         this.playerItems.xObjects = myStreamX23
@@ -238,6 +231,7 @@ public class Player implements Serializable {
         } else System.out.println("NO ITEMS TO DROP RETAAAAAAAAAAAAARD");
     }
 
+    //droppar specifikt itemsen.. skickar vidare matchat item till dropNPCItem metoden..
     public synchronized void playerDropS(String G){
         if(this.showItems.length > 0) {
 
@@ -260,6 +254,7 @@ public class Player implements Serializable {
         }
     }
 
+    //tar upp itemsen.. Om dem heter NPC är för det copy paste med lätt modifering från NPC! Praktiskt!
     public synchronized void getRoomItemS(String Y){
         this.showItems();
         if(this.showItems.length < 5) {
@@ -290,6 +285,7 @@ public class Player implements Serializable {
         } else Game.gui.setShowPersons2("Kan ej ta upp fler items, max 5!");
     }
 
+    //snor itemsen från NPC..
     public synchronized void getNpcitem(String L){
         switch(this.currentrum){
             case 1:
@@ -339,6 +335,7 @@ public class Player implements Serializable {
         }
     }
 
+    //Victory CHECK!
     public synchronized void checkForKey() {
         Stream<GameObject> myStreamR = Stream.of(this.playerItems.xObjects);
         GameObject[] specific = myStreamR

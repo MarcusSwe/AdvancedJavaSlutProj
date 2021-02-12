@@ -13,7 +13,7 @@ public class GameObject implements Serializable {
         this.stationary = z;
 
     }
-
+   //looked or not och stationary ej använda pga brist på tid pga börja alldeles för sent. Ligger fint här dock för framtida use..
 
     public boolean getBoolean(){
         return this.lockedOrNot;

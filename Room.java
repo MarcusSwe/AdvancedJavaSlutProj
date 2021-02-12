@@ -12,7 +12,7 @@ public class Room implements Serializable {
     Inventory iTest;
     GameObject[] showItems;
     String xDoor = "";
-    int passaItem = 0;
+    int passaItem = 0; //se förklaring nedan..
     String rumNamn = "";
 
     public Room(String x, Inventory m){
@@ -20,18 +20,14 @@ public class Room implements Serializable {
         this.iTest = m;
         this.roomItems = new Inventory(20);
 
-
-
-
-
-        //this.roomItems.xObjects[0] = new GameObject("TEST",false,false);
     }
 
-
+   // se dörr till detta rum
     public void giveDoor(){
         this.xDoor = "Dörr";
     }
 
+    // metoden som spelaren och npc använder för tala om dem är i rummet..
     public synchronized void setRoom(String y){
         Stream<String> myStream2 = Stream.of(this.roomtest);
 
@@ -53,6 +49,7 @@ public class Room implements Serializable {
                 .collect(Collectors.toList()).toArray(new String[4]);
     }
 
+    //tar bort indivinden som lämnar rummet..
     public synchronized void leaveRoom(String y){
         Stream<String> myStream2 = Stream.of(this.roomtest);
         this.roomtest = myStream2
@@ -63,6 +60,7 @@ public class Room implements Serializable {
                 .collect(Collectors.toList()).toArray(new String[4]);
     }
 
+    //talar om vem som är i rummet..bygger string och returear..
     public synchronized String getRoom() {
         Stream<String> myStream3 = Stream.of(this.roomtest);
         String[] currentRoomMembers = myStream3
@@ -88,7 +86,7 @@ public class Room implements Serializable {
     }
 
 
-
+   //metod som tillkallas av individen för att ta emot droppade items..
     public synchronized void addRoomItem(GameObject t){
      Stream<GameObject> myStreamX = Stream.of(this.roomItems.xObjects);
      this.roomItems.xObjects = myStreamX
@@ -97,9 +95,6 @@ public class Room implements Serializable {
              } else return x;
              })
              .distinct()
-            //  .map(x -> {x.setItemName("XXXXXX"); return x;})
-         //    .map(x -> {x.setBoolean(false); return x;})
-           //  .map(x -> {x.setStationary(false); return x;})
              .collect(Collectors.toList()).toArray(new GameObject[20]);
 
         Stream<GameObject> myStreamX2 = Stream.of(this.roomItems.xObjects);
@@ -111,7 +106,6 @@ public class Room implements Serializable {
                 })
                 .collect(Collectors.toList()).toArray(new GameObject[20]);
          passaItem++;
-         //System.out.println(passaItem + "           CPPPPPPPPPPPPPPPPPPPPPPPPPPPp");
     }
 
     public synchronized void removeRoomItem(GameObject d){
@@ -124,6 +118,7 @@ public class Room implements Serializable {
                 .collect(Collectors.toList()).toArray(new GameObject[20]);
     }
 
+    //printar ut itemsen
     public synchronized String showRoomItem(){
         Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
         this.showItems = myStreamR
@@ -154,6 +149,7 @@ public class Room implements Serializable {
       return npcPickup;
     }
 
+    //S i slutet menar.. spelaren tar upp speciellt item!
     public synchronized GameObject getItemS(String U){
         Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
         GameObject[] specific = myStreamR
@@ -180,6 +176,9 @@ public class Room implements Serializable {
         Arrays.fill(this.roomItems.xObjects, Game.emptyCell);
     }
 
+    // OKEJ.. denna metod uppkom för det uppstod ett fel när två NPC tog upp ett item samtidigt trotts sync
+    //på metoderna.. så denna körs först och kollar om det finns items i rummet..och sedan minskar antalet..
+    //så är den 0 så går man inte vidare tilll metoden som tar upp itemsen och skapar problem..
     public synchronized boolean passaItem(){
 
         if (this.passaItem >0) {

@@ -4,9 +4,7 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.Objects;
 
-/*Extremt enkelt Gui för att kunna komma igång.
-Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kursmoment - så fastna inte här!
- */
+
 
 
     public class Gui extends JFrame implements Serializable {
@@ -16,7 +14,6 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         private JTextArea showPersons;
         private JTextArea status;
         private JTextField input;
-        //private JTextField input2;
         private JTextArea inventory;
         private JTextArea inventory2;
         private String command;
@@ -37,20 +34,8 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.setVisible(true);
             this.setResizable(false);
 
-
-
         }
 
-        //Returnera det senaste commitade kommandot
-        /*public String getCommand(){
-            if (this.gotCommand){
-                System.out.println(this.command);
-                return this.command;
-            }
-            return null;
-        }*/
-
-        //Här kan man updatera respektive fält:
 
         public void setShowPersons(String person){
             this.showPersons.setText(person);
@@ -64,17 +49,8 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
         public void setShowRoom(String roomDescription){
             this.showRoom.setText(roomDescription);
         }
-        //Add person to room
-        public void setPerson(Person p){
-            this.showPersons.setText(p.toString());
-        }
 
-//Nedantåenda spaghetti är inte vacker...
 
-        /*
-        public void gotCommand(){
-            this.gotCommand = false;
-        }*/
 
         private void setUpPanel(){
             this.panel.add(showPersons);
@@ -97,13 +73,14 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.inventory2 = new JTextArea("");
             this.status = new JTextArea("Status: Find key and find door to win type EXIT! \n Move around with MOVEROOM \n Pickup item with 'P itemname' \n or drop with 'D itemname' \n or 'NPC P itemname' do pickup NPC item");
             this.input = new JTextField("Give command");
-            //this.input2 = new JTextField("Type item to drop or pickup");
             this.showPersons.setEditable(false);
             this.showRoom.setEditable(false);
             this.inventory.setEditable(false);
             this.inventory2.setEditable(false);
             this.status.setEditable(false);
 
+
+            //yeah..finns väl vackrare sätt än detta spam..men börja sent så gör man det man vet fungerar ;)
             ActionListener inputListener = e -> {
                 this.setShowPersons2("Status: Find key and find door to win, type EXIT! \n Move around with MOVEROOM \n Pickup item with 'P itemname' \n or drop with 'D itemname' \n or 'NPC P itemname' do pickup NPC item");
                 this.command = input.getText();
@@ -256,11 +233,6 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
 
             this.save = new JButton("Save");
             this.save.addActionListener(saveFile);
-
-            //this.button.addActionListener(inputListener);
-
-
-
 
 
         }

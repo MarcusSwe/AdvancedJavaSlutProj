@@ -20,11 +20,9 @@ public class Game implements Serializable{
     static Gui gui = new Gui();
     static Update updateGUI = new Update(xTest);
     static String filename = "loadFile";
-    static ArrayList<Object> saveData = new ArrayList<>();
 
+    // Initierar arrayer osv Men startar ej spelet väntar på användaren tryck start.
     public Game(){
-
-        //Update updateGUI = new Update(xTest);
 
         rum1.setRoom("MEEEEE");
 
@@ -51,7 +49,6 @@ public class Game implements Serializable{
         GameObject item7 = new GameObject("Colaburk", false, false);
 
 
-
         xTest.xObjects[0] = keyToDoor;
         xTest.xObjects[1] = doorToFinish;
         xTest.xObjects[2] = item1;
@@ -62,26 +59,14 @@ public class Game implements Serializable{
         xTest.xObjects[7] = item6;
         xTest.xObjects[8] = item7;
 
-
-
-
-
-        //* dela ut items till rummet här innan updateroomsItems...
-
         rum1.updateRoomItems();
         rum2.updateRoomItems();
         rum3.updateRoomItems();
         rum4.updateRoomItems();
         randomItemsToRooms();
 
-     /*
-        ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
-        pool.scheduleAtFixedRate(updateGUI ,1,1200, TimeUnit.MILLISECONDS);
-        pool.scheduleAtFixedRate(Jason ,1,8, TimeUnit.SECONDS);
-        pool.scheduleAtFixedRate(Freddy ,1,8, TimeUnit.SECONDS);
-        pool.scheduleAtFixedRate(TureSventon ,1,8, TimeUnit.SECONDS);
-*/
 
+        //Dörr till random rum
         int door = (int)((Math.random()*4)+1);
         switch(door){
             case 1:
@@ -100,6 +85,7 @@ public class Game implements Serializable{
 
     }
 
+    //Laddar alla sparfiler på en gång
     public static Player loadFile(){
         JFileChooser LF = new JFileChooser("/myfilepath");
         LF.showOpenDialog(null);
@@ -113,7 +99,6 @@ public class Game implements Serializable{
         loadFreddy();
         loadJason();
         loadTureSventon();
-
 
         FileInputStream fis = null;
 
@@ -243,6 +228,7 @@ public class Game implements Serializable{
         return TureSventon;
     }
 
+    //Sparar allt! Men filechooser buggar. Sparar ej till rätt katalog, utan rooten på programmet!
     public static void saveFile(){
         JFileChooser SF = new JFileChooser("/myfilepath");
         SF.showSaveDialog(null);
@@ -357,7 +343,7 @@ public class Game implements Serializable{
 
 
 
-
+    //Startar spelet efter kommando av anvädnaren, sätter igång threads..
     public static void startGame() {
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);
         pool.scheduleAtFixedRate(updateGUI, 1, 1200, TimeUnit.MILLISECONDS);
@@ -366,6 +352,7 @@ public class Game implements Serializable{
         pool.scheduleAtFixedRate(TureSventon, 1, 8, TimeUnit.SECONDS);
     }
 
+    //Skickar ut itemsen till rummen och nyckeln till random rum
     public static void randomItemsToRooms(){
         int alpha = (int)((Math.random()*4)+1);
         switch(alpha){
@@ -394,6 +381,8 @@ public class Game implements Serializable{
         rum4.addRoomItem(xTest.xObjects[8]);
     }
 
+
+    //------ TEST METODER, IGNORERA, vill ha kvar dem för eget bruk
     public static void randomItemsToRooms2(){
         jAg.getRoomItem();
     }
@@ -432,16 +421,15 @@ public class Game implements Serializable{
     public static void X3TEST() {
         jAg.run4();
     }
+    //----- slut test metoeder
 
-    /*public static void X4TEST() {
-        jAg.run5();
-    }*/
-
+    // Flytta spelaren till random rum , roligare med random eftersom det blir svårare..
     public static void MOVEROOM(){
         jAg.leaveRoom();
         jAg.goToRoom();
     }
 
+    //Welcome to the spam ;)
     public static void pDoor(){
         jAg.getRoomItemS("Tandborste");
     }
@@ -530,19 +518,6 @@ public class Game implements Serializable{
        jAg.checkForKey();
     }
 
-  /* flytta över denna till person klassen.. Man kanske har runnable här utan använder sig av getters och setters där man skickar info och flyttar dem till olika rum eftersom han inte har runnable..
-    class xNPC extends Npc implements Runnable {
-        String xname;
-
-        public xNPC(String xname){
-            this.xname = xname;
-        }
-
-        @Override
-        public void run(){
-            System.out.println(this.xname + " says hi from room x");
-        }
-    }*/
 
 
 
