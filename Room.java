@@ -36,7 +36,7 @@ public class Room implements Serializable {
         Stream<String> myStream2 = Stream.of(this.roomtest);
 
         this.roomtest = myStream2
-                .map(x -> {if(x == "" || x == null){
+                .map(x -> {if(x.equals("") || x == null){
                     return y;
                 } else return x;
                 })
@@ -56,7 +56,7 @@ public class Room implements Serializable {
     public synchronized void leaveRoom(String y){
         Stream<String> myStream2 = Stream.of(this.roomtest);
         this.roomtest = myStream2
-                .map(x -> {if(x == y){
+                .map(x -> {if(x.equals(y)){
                     return "";
                 } else return x;
                 })
@@ -70,16 +70,16 @@ public class Room implements Serializable {
                 .collect(Collectors.toList()).toArray(new String[0]);
         rumNamn = "";
         for(int i = 0; i < currentRoomMembers.length; i++){
-            if(currentRoomMembers[i] == "MEEEEE") {
+            if(currentRoomMembers[i].equals("MEEEEE")) {
                 rumNamn = rumNamn + "\n" + currentRoomMembers[i]+"("+Game.jAg.printNPCItems()+")";
             }
-            if(currentRoomMembers[i] == "Jason") {
+            if(currentRoomMembers[i].equals("Jason")) {
                 rumNamn = rumNamn + "\n" + currentRoomMembers[i]+" says: Hi there! " +"("+Game.Jason.printNPCItems()+")";
             }
-            if(currentRoomMembers[i] == "Ture Sventon") {
+            if(currentRoomMembers[i].equals("Ture Sventon")) {
                 rumNamn = rumNamn + "\n" + currentRoomMembers[i]+" says: This is my loot! "+"("+Game.TureSventon.printNPCItems()+")";
             }
-            if(currentRoomMembers[i] == "Freddy") {
+            if(currentRoomMembers[i].equals("Freddy")) {
                 rumNamn = rumNamn + "\n" + currentRoomMembers[i]+" says: Im looking for the key! "+"("+Game.Freddy.printNPCItems()+")";
             }
         }
@@ -92,7 +92,7 @@ public class Room implements Serializable {
     public synchronized void addRoomItem(GameObject t){
      Stream<GameObject> myStreamX = Stream.of(this.roomItems.xObjects);
      this.roomItems.xObjects = myStreamX
-             .map(x -> {if(x.getItemName() == Game.emptyCell.getItemName()){
+             .map(x -> {if(x.getItemName().equals(Game.emptyCell.getItemName())){
                  return t;
              } else return x;
              })
@@ -111,13 +111,13 @@ public class Room implements Serializable {
                 })
                 .collect(Collectors.toList()).toArray(new GameObject[20]);
          passaItem++;
-         System.out.println(passaItem + "           CPPPPPPPPPPPPPPPPPPPPPPPPPPPp");
+         //System.out.println(passaItem + "           CPPPPPPPPPPPPPPPPPPPPPPPPPPPp");
     }
 
     public synchronized void removeRoomItem(GameObject d){
         Stream<GameObject> myStreamX = Stream.of(this.roomItems.xObjects);
         this.roomItems.xObjects = myStreamX
-                .map(x -> {if(x.getItemName() == d.getItemName()){
+                .map(x -> {if(x.getItemName().equals(d.getItemName())){
                     return Game.emptyCell;
                 } else return x;
                 })
@@ -128,7 +128,7 @@ public class Room implements Serializable {
         Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
         this.showItems = myStreamR
                 .distinct()
-                .filter(x -> {if(x == Game.emptyCell){
+                .filter(x -> {if(x.getItemName().equals(Game.emptyCell.getItemName())){
                     return false;
                 } else return true;
                 })
@@ -144,7 +144,7 @@ public class Room implements Serializable {
         Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
         this.showItems = myStreamR
                 .distinct()
-                .filter(x -> {if(x == Game.emptyCell){
+                .filter(x -> {if(x.getItemName().equals(Game.emptyCell.getItemName())){
                     return false;
                 } else return true;
                 })
@@ -158,11 +158,11 @@ public class Room implements Serializable {
         Stream<GameObject> myStreamR = Stream.of(this.roomItems.xObjects);
         GameObject[] specific = myStreamR
                 .distinct()
-                .filter(x -> {if(x.getItemName() == U){
+                .filter(x -> {if(x.getItemName().equals(U)){
                     return true;
                 } else return false;
                 })
-                .filter(x -> {if(x == Game.emptyCell){
+                .filter(x -> {if(x.getItemName().equals(Game.emptyCell.getItemName())){
                     return false;
                 } else return true;
                 })
@@ -193,7 +193,7 @@ public class Room implements Serializable {
         Stream<GameObject> myStreamRTY = Stream.of(this.roomItems.xObjects);
         this.showItems = myStreamRTY
                 .distinct()
-                .filter(x -> {if(x == Game.emptyCell){
+                .filter(x -> {if(x.getItemName().equals(Game.emptyCell.getItemName())){
                     return false;
                 } else return true;
                 })

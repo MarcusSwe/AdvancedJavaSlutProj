@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -19,6 +20,7 @@ public class Game implements Serializable{
     static Gui gui = new Gui();
     static Update updateGUI = new Update(xTest);
     static String filename = "loadFile";
+    static ArrayList<Object> saveData = new ArrayList<>();
 
     public Game(){
 
@@ -106,7 +108,9 @@ public class Game implements Serializable{
 
 
         FileInputStream fis = null;
+
         try{
+
             fis = new FileInputStream(filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
             jAg = (Player) ois.readObject();
@@ -120,7 +124,7 @@ public class Game implements Serializable{
     }
 
     public static void saveFile(){
-        JFileChooser SF = new JFileChooser("/myfilepath");
+      /*  JFileChooser SF = new JFileChooser("/myfilepath");
         SF.showSaveDialog(null);
         File file = SF.getSelectedFile();
 
@@ -134,9 +138,23 @@ public class Game implements Serializable{
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+        try {
+            FileOutputStream fos = new FileOutputStream(filename);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(jAg);
+            oos.close();
 
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+
+
 
     public static void startGame() {
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(5);

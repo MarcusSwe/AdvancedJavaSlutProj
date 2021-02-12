@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -15,8 +16,9 @@ public class Player implements Serializable {
     String xname;
     int currentrum;
     Inventory playerItems;
-    GameObject[] showItems = new GameObject[5];
-
+    //GameObject[] showItems = new GameObject[5];
+    GameObject[] showItems;
+    GameObject emptyCellX;
 
     public Player(Inventory g, int x, String o, int r) {
         this.alpha = g;
@@ -24,6 +26,7 @@ public class Player implements Serializable {
         this.xname = o;
         this.currentrum = r;
         this.playerItems = new Inventory(5);
+        this.emptyCellX = new GameObject("emptycell", false, false);
         }
 
 
@@ -111,7 +114,8 @@ public class Player implements Serializable {
     }
 
     public void defaultFillInventory(){
-        Arrays.fill(this.playerItems.xObjects, Game.emptyCell);
+
+        Arrays.fill(this.playerItems.xObjects, this.emptyCellX);
     }
 
 
@@ -148,7 +152,7 @@ public class Player implements Serializable {
     public synchronized void addRoomItem(GameObject t){
         Stream<GameObject> myStreamX4444 = Stream.of(this.playerItems.xObjects);
         this.playerItems.xObjects = myStreamX4444
-                .map(x -> {if(x.getItemName() == Game.emptyCell.getItemName()){
+                .map(x -> {if(x.getItemName().equals(this.emptyCellX.getItemName())){
                     return t;
                 } else return x;
                 })
@@ -158,7 +162,7 @@ public class Player implements Serializable {
         Stream<GameObject> myStreamX3333 = Stream.of(this.playerItems.xObjects);
         this.playerItems.xObjects = myStreamX3333
                 .map(x -> {if(x == null){
-                    return Game.emptyCell;
+                    return this.emptyCellX;
                 } else return x;
                 })
                 .collect(Collectors.toList()).toArray(new GameObject[5]);
@@ -169,7 +173,11 @@ public class Player implements Serializable {
         Stream<GameObject> myStreamRX = Stream.of(this.playerItems.xObjects);
         this.showItems = myStreamRX
                 .distinct()
-                .filter(x -> {if(x == Game.emptyCell){
+                .filter(x -> {if(x.getItemName().equals(this.emptyCellX.getItemName())){
+                    return false;
+                } else return true;
+                })
+                .filter(x -> {if(x.getItemName().equals(this.emptyCellX.getItemName())){
                     return false;
                 } else return true;
                 })
@@ -180,7 +188,7 @@ public class Player implements Serializable {
         Stream<GameObject> myStreamRXU = Stream.of(this.playerItems.xObjects);
         this.showItems = myStreamRXU
                 .distinct()
-                .filter(x -> {if(x == Game.emptyCell){
+                .filter(x -> {if(x.getItemName().equals(this.emptyCellX.getItemName())){
                     return false;
                 } else return true;
                 })
@@ -189,14 +197,16 @@ public class Player implements Serializable {
         for(int i = 0; i < showItems.length; i++){
             npcItems = npcItems +" " + showItems[i].getItemName();
         }
+
         return npcItems;
+
     }
 
     public synchronized void dropNPCItem(GameObject d){
         Stream<GameObject> myStreamX23 = Stream.of(this.playerItems.xObjects);
         this.playerItems.xObjects = myStreamX23
-                .map(x -> {if(x.getItemName() == d.getItemName()){
-                    return Game.emptyCell;
+                .map(x -> {if(x.getItemName().equals(d.getItemName())){
+                    return this.emptyCellX;
                 } else return x;
                 })
                 .collect(Collectors.toList()).toArray(new GameObject[0]);
@@ -234,11 +244,11 @@ public class Player implements Serializable {
             Stream<GameObject> myStreamR = Stream.of(this.playerItems.xObjects);
             GameObject[] specificP = myStreamR
                     .distinct()
-                    .filter(x -> {if(x.getItemName() == G){
+                    .filter(x -> {if(Objects.equals(x.getItemName(),G)){
                         return true;
                     } else return false;
                     })
-                    .filter(x -> {if(x == Game.emptyCell){
+                    .filter(x -> {if(x.getItemName().equals(this.emptyCellX.getItemName())){
                         return false;
                     } else return true;
                     })
@@ -334,12 +344,12 @@ public class Player implements Serializable {
         GameObject[] specific = myStreamR
                 .distinct()
                 .filter(x -> {
-                    if (x.getItemName() == "KeyToUnlock") {
+                    if (x.getItemName().equals("KeyToUnlock")) {
                         return true;
                     } else return false;
                 })
                 .filter(x -> {
-                    if (x == Game.emptyCell) {
+                    if (x.getItemName().equals(this.emptyCellX.getItemName())) {
                         return false;
                     } else return true;
                 })
@@ -350,6 +360,8 @@ public class Player implements Serializable {
             Game.gui.setShowPersons2("Fel rum eller ingen nyckel!");
         }
     }
+
+
 
 }
 

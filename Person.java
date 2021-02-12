@@ -3,14 +3,14 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Person<showItems> extends Npc implements Runnable, Serializable {
+public class Person extends Npc implements Runnable, Serializable {
     String xname;
     int size;
     Inventory iTest;
     int currentrum = 1;
     Inventory npcItems;
     GameObject[] showItems = new GameObject[2];
-    boolean hittacpfel = false;
+
 
     public Person(String xname, int y, Inventory o, int x){
         this.xname = xname;
@@ -63,7 +63,7 @@ public class Person<showItems> extends Npc implements Runnable, Serializable {
         }
 
 
-        System.out.println(this.xname + " says hi from room "+ z);
+       // System.out.println(this.xname + " says hi from room "+ z);
     }
 
     public void leaveRoom(){
@@ -88,7 +88,7 @@ public class Person<showItems> extends Npc implements Runnable, Serializable {
     public void addRoomItem(GameObject t){
         Stream<GameObject> myStreamX4444 = Stream.of(this.npcItems.xObjects);
         this.npcItems.xObjects = myStreamX4444
-                .map(x -> {if(x.getItemName() == Game.emptyCell.getItemName()){
+                .map(x -> {if(x.getItemName().equals(Game.emptyCell.getItemName())){
                     return t;
                 } else return x;
                 })
@@ -142,7 +142,7 @@ public class Person<showItems> extends Npc implements Runnable, Serializable {
     public synchronized void dropNPCItem(GameObject d){
         Stream<GameObject> myStreamX23 = Stream.of(this.npcItems.xObjects);
         this.npcItems.xObjects = myStreamX23
-                .map(x -> {if(x.getItemName() == d.getItemName()){
+                .map(x -> {if(x.getItemName().equals(d.getItemName())){
                     return Game.emptyCell;
                 } else return x;
                 })
@@ -173,7 +173,7 @@ public class Person<showItems> extends Npc implements Runnable, Serializable {
         Stream<GameObject> myStreamRX = Stream.of(this.npcItems.xObjects);
         this.showItems = myStreamRX
                 .distinct()
-                .filter(x -> {if(x == Game.emptyCell){
+                .filter(x -> {if(x.getItemName().equals(Game.emptyCell.getItemName())){
                     return false;
                 } else return true;
                 })
@@ -184,7 +184,7 @@ public class Person<showItems> extends Npc implements Runnable, Serializable {
         Stream<GameObject> myStreamRXU = Stream.of(this.npcItems.xObjects);
         this.showItems = myStreamRXU
                 .distinct()
-                .filter(x -> {if(x == Game.emptyCell){
+                .filter(x -> {if(x.getItemName().equals(Game.emptyCell.getItemName())){
                     return false;
                 } else return true;
                 })
@@ -200,11 +200,11 @@ public class Person<showItems> extends Npc implements Runnable, Serializable {
         Stream<GameObject> myStreamR = Stream.of(this.npcItems.xObjects);
         GameObject[] specific = myStreamR
                 .distinct()
-                .filter(x -> {if(x.getItemName() == P){
+                .filter(x -> {if(x.getItemName().equals(P)){
                     return true;
                 } else return false;
                 })
-                .filter(x -> {if(x == Game.emptyCell){
+                .filter(x -> {if(x.getItemName().equals(Game.emptyCell.getItemName())){
                     return false;
                 } else return true;
                 })
@@ -221,7 +221,7 @@ public class Person<showItems> extends Npc implements Runnable, Serializable {
     public synchronized void dropNPCItemToPlayer(GameObject d){
         Stream<GameObject> myStreamX23 = Stream.of(this.npcItems.xObjects);
         this.npcItems.xObjects = myStreamX23
-                .map(x -> {if(x.getItemName() == d.getItemName()){
+                .map(x -> {if(x.getItemName().equals(d.getItemName())){
                     return Game.emptyCell;
                 } else return x;
                 })

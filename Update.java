@@ -1,6 +1,8 @@
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class Update implements Runnable{
+public class Update implements Runnable, Serializable {
 
     Inventory boom;
 
@@ -15,10 +17,21 @@ public class Update implements Runnable{
        // System.out.println(Arrays.toString(this.boom.getRoom()));
         //System.out.println(Arrays.toString(this.boom.getStream()));
 
-        System.out.println(Game.rum1.getRoom());
+/*        System.out.println(Game.rum1.getRoom());
         System.out.println(Game.rum2.getRoom());
         System.out.println(Game.rum3.getRoom());
-        System.out.println(Game.rum4.getRoom());
+        System.out.println(Game.rum4.getRoom());*/
+
+        Game.jAg.showItems();
+
+        System.out.println(Arrays.toString(Game.jAg.showItems));
+        System.out.println(Arrays.toString(Game.jAg.playerItems.xObjects));
+        System.out.println(Game.jAg.playerItems.xObjects[0].getItemName());
+        System.out.println(Game.jAg.playerItems.xObjects[1].getItemName());
+        System.out.println(Game.jAg.playerItems.xObjects[2].getItemName());
+        System.out.println(Game.jAg.playerItems.xObjects[3].getItemName());
+        System.out.println(Game.jAg.playerItems.xObjects[4].getItemName());
+        System.out.println("-------------------------");
 
 
         switch(Game.jAg.giveRoom()){
