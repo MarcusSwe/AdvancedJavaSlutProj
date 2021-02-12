@@ -106,6 +106,14 @@ public class Game implements Serializable{
         File file = LF.getSelectedFile();
         filename = file.getName();
 
+        loadRum1();
+        loadRum2();
+        loadRum3();
+        loadRum4();
+        loadFreddy();
+        loadJason();
+        loadTureSventon();
+
 
         FileInputStream fis = null;
 
@@ -123,22 +131,124 @@ public class Game implements Serializable{
 
     }
 
+    public static Room loadRum1(){
+        FileInputStream fis = null;
+
+        try{
+
+            fis = new FileInputStream(filename+"rum1");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            rum1 = (Room) ois.readObject();
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
+
+        }
+        return rum1;
+    }
+
+    public static Room loadRum2(){
+        FileInputStream fis = null;
+
+        try{
+
+            fis = new FileInputStream(filename+"rum2");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            rum2 = (Room) ois.readObject();
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
+
+        }
+        return rum2;
+    }
+
+    public static Room loadRum3(){
+        FileInputStream fis = null;
+
+        try{
+
+            fis = new FileInputStream(filename+"rum3");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            rum3 = (Room) ois.readObject();
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
+
+        }
+        return rum3;
+    }
+
+    public static Room loadRum4(){
+        FileInputStream fis = null;
+
+        try{
+
+            fis = new FileInputStream(filename+"rum4");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            rum4 = (Room) ois.readObject();
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
+
+        }
+        return rum4;
+    }
+
+    public static Person loadFreddy(){
+        FileInputStream fis = null;
+
+        try{
+
+            fis = new FileInputStream(filename+"freddy");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Freddy = (Person) ois.readObject();
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
+
+        }
+        return Freddy;
+    }
+
+    public static Person loadJason(){
+        FileInputStream fis = null;
+
+        try{
+
+            fis = new FileInputStream(filename+"jason");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Jason = (Person) ois.readObject();
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
+
+        }
+        return Jason;
+    }
+
+    public static Person loadTureSventon(){
+        FileInputStream fis = null;
+
+        try{
+
+            fis = new FileInputStream(filename+"turesventon");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            TureSventon = (Person) ois.readObject();
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
+
+        }
+        return TureSventon;
+    }
+
     public static void saveFile(){
-      /*  JFileChooser SF = new JFileChooser("/myfilepath");
+        JFileChooser SF = new JFileChooser("/myfilepath");
         SF.showSaveDialog(null);
         File file = SF.getSelectedFile();
+        filename = file.getName();
 
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(jAg);
-            oos.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
         try {
             FileOutputStream fos = new FileOutputStream(filename);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -151,6 +261,98 @@ public class Game implements Serializable{
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(filename+"rum1");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(rum1);
+            oos.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(filename+"rum2");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(rum2);
+            oos.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(filename+"rum3");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(rum3);
+            oos.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(filename+"rum4");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(rum4);
+            oos.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(filename+"jason");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(Jason);
+            oos.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(filename+"freddy");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(Freddy);
+            oos.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(filename+"turesventon");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(TureSventon);
+            oos.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -165,7 +367,23 @@ public class Game implements Serializable{
     }
 
     public static void randomItemsToRooms(){
-        rum1.addRoomItem(xTest.xObjects[0]);
+        int alpha = (int)((Math.random()*4)+1);
+        switch(alpha){
+            case 1:
+                rum1.addRoomItem(xTest.xObjects[0]);
+                break;
+            case 2:
+                rum2.addRoomItem(xTest.xObjects[0]);
+                break;
+            case 3:
+                rum3.addRoomItem(xTest.xObjects[0]);
+                break;
+            case 4:
+                rum4.addRoomItem(xTest.xObjects[0]);
+                break;
+        }
+
+
         rum2.addRoomItem(xTest.xObjects[1]);
         rum4.addRoomItem(xTest.xObjects[2]);
         rum3.addRoomItem(xTest.xObjects[3]);

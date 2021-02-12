@@ -87,7 +87,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.panel.add(start);
             this.panel.add(load);
             this.panel.add(save);
-            this.panel.add(inventory);
+           // this.panel.add(inventory);
         }
         private void setUpElements(){
             this.panel = new JPanel(new GridLayout(4,3));
@@ -95,7 +95,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.showPersons = new JTextArea();
             this.inventory = new JTextArea("");
             this.inventory2 = new JTextArea("");
-            this.status = new JTextArea("Status: Find key and find door to win! Pickup item with 'P itemname' \n or drop with 'D itemname' \n or 'NPC P itemname' do pickup NPC item");
+            this.status = new JTextArea("Status: Find key and find door to win type EXIT! \n Move around with MOVEROOM \n Pickup item with 'P itemname' \n or drop with 'D itemname' \n or 'NPC P itemname' do pickup NPC item");
             this.input = new JTextField("Give command");
             //this.input2 = new JTextField("Type item to drop or pickup");
             this.showPersons.setEditable(false);
@@ -105,7 +105,7 @@ Snygga gärna till/gör ett eget. Men tänk på att gör GUI:s INTE är ett kurs
             this.status.setEditable(false);
 
             ActionListener inputListener = e -> {
-                this.setShowPersons2("Status: Find key and find door to win! Pickup item with 'P itemname' \n or drop with 'D itemname' \n or 'NPC P itemname' do pickup NPC item");
+                this.setShowPersons2("Status: Find key and find door to win, type EXIT! \n Move around with MOVEROOM \n Pickup item with 'P itemname' \n or drop with 'D itemname' \n or 'NPC P itemname' do pickup NPC item");
                 this.command = input.getText();
                 switch (this.command){
                     case "test":
