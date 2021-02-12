@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Update implements Runnable{
+public class Update implements Runnable, Serializable {
 
     Inventory boom;
 
